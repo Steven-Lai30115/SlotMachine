@@ -38,7 +38,6 @@
 		24EBFD2629773AA40089D546 /* JackpotBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JackpotBalance.swift; sourceTree = "<group>"; };
 		24EBFD2829773B030089D546 /* BetAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetAmount.swift; sourceTree = "<group>"; };
 		24EBFD2A29773BDC0089D546 /* Reel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reel.swift; sourceTree = "<group>"; };
-		24EBFD2C297743B80089D546 /* Spin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spin.swift; sourceTree = "<group>"; };
 		24EBFD2E297749A10089D546 /* ReelSpin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelSpin.swift; sourceTree = "<group>"; };
 		7A92D1B0297616D300462055 /* SlotMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlotMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A92D1B3297616D300462055 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +118,6 @@
 				24EBFD2629773AA40089D546 /* JackpotBalance.swift */,
 				24EBFD2829773B030089D546 /* BetAmount.swift */,
 				24EBFD2A29773BDC0089D546 /* Reel.swift */,
-				24EBFD2C297743B80089D546 /* Spin.swift */,
 				24EBFD2E297749A10089D546 /* ReelSpin.swift */,
 			);
 			path = GameObject;
