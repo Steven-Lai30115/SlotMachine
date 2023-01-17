@@ -8,10 +8,10 @@ class ReelSpin : UIElement{
     var topBoundary: CGFloat?
     var bottomBoundary: CGFloat?
     let margin = 16.0
-    var spinSpeed = 20.0
+    var spinSpeed = 10.0
     
     init(imageString : String, scale : CGFloat, _zPosition: CGFloat, _reel: Reel, _index: Int8){
-        super.init(_name: "\(imageString)\(_reel.index)\(_index)", imageString: imageString, initialScale: scale, _zPosition: _zPosition)
+        super.init(_name: "\(imageString)\(String(describing: _reel.index))\(_index)", imageString: imageString, initialScale: scale, _zPosition: _zPosition)
         reel = _reel
         index = _index
         height = _reel.height
