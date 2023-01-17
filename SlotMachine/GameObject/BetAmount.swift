@@ -1,7 +1,7 @@
 import GameplayKit
 import SpriteKit
 
-class SceneUI : UIElement{
+class BetAmount : UIElement{
     
     init(imageString : String, scale : CGFloat, _zPosition: CGFloat){
         super.init(imageString: imageString, initialScale: scale, _zPosition: _zPosition)
@@ -11,4 +11,9 @@ class SceneUI : UIElement{
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func setInitialPosition(screenHeight: CGFloat, screenWidth: CGFloat){
+        position.x = 0 + 72 - halfWidth!
+        position.y = 0 - screenHeight / 3 + halfHeight!
+        //(x: -10, y: -280)
+    }
 }

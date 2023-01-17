@@ -5,6 +5,8 @@ class UIElement : SKSpriteNode{
     var scale : CGFloat?
     var width  : CGFloat?
     var height : CGFloat?
+    var halfWidth  : CGFloat?
+    var halfHeight : CGFloat?
     
     init(imageString: String, initialScale : CGFloat, _zPosition : CGFloat){
         let texture = SKTexture(imageNamed: imageString)
@@ -15,6 +17,8 @@ class UIElement : SKSpriteNode{
         setScale(scale!)
         width = texture.size().width * scale!
         height = texture.size().height * scale!
+        halfWidth = width! / 2
+        halfHeight = height! / 2
         name = imageString
     }
     
@@ -22,5 +26,6 @@ class UIElement : SKSpriteNode{
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setInitialPosition(screenHeight: CGFloat, screenWidth: CGFloat){}
 }
 

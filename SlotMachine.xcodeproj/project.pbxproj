@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24EBFD1D2977353C0089D546 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD1C2977353C0089D546 /* Background.swift */; };
+		24EBFD1F297736F40089D546 /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD1E297736F40089D546 /* ResetButton.swift */; };
+		24EBFD21297737990089D546 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD20297737990089D546 /* PlayButton.swift */; };
+		24EBFD23297738280089D546 /* BetControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD22297738280089D546 /* BetControlButton.swift */; };
+		24EBFD2529773A100089D546 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD2429773A100089D546 /* Balance.swift */; };
+		24EBFD2729773AA40089D546 /* JackpotBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD2629773AA40089D546 /* JackpotBalance.swift */; };
+		24EBFD2929773B030089D546 /* BetAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD2829773B030089D546 /* BetAmount.swift */; };
+		24EBFD2B29773BDC0089D546 /* Reel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD2A29773BDC0089D546 /* Reel.swift */; };
 		7A92D1B4297616D300462055 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92D1B3297616D300462055 /* AppDelegate.swift */; };
 		7A92D1B6297616D300462055 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A92D1B5297616D300462055 /* GameScene.sks */; };
 		7A92D1B8297616D300462055 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A92D1B7297616D300462055 /* Actions.sks */; };
@@ -15,13 +23,20 @@
 		7A92D1BF297616D300462055 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A92D1BD297616D300462055 /* Main.storyboard */; };
 		7A92D1C1297616D400462055 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A92D1C0297616D400462055 /* Assets.xcassets */; };
 		7A92D1C4297616D400462055 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A92D1C2297616D400462055 /* LaunchScreen.storyboard */; };
-		7ADD60AE297703530007A52E /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD60AD297703530007A52E /* GameObject.swift */; };
 		7ADD60B32977160C0007A52E /* UIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD60B22977160C0007A52E /* UIElement.swift */; };
-		7ADD60B5297726200007A52E /* SceneUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD60B4297726200007A52E /* SceneUI.swift */; };
+		7ADD60B5297726200007A52E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD60B4297726200007A52E /* BackButton.swift */; };
 		7AFD178F29764A8D009A19A6 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 7AFD178E29764A8D009A19A6 /* assets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24EBFD1C2977353C0089D546 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		24EBFD1E297736F40089D546 /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
+		24EBFD20297737990089D546 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		24EBFD22297738280089D546 /* BetControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetControlButton.swift; sourceTree = "<group>"; };
+		24EBFD2429773A100089D546 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
+		24EBFD2629773AA40089D546 /* JackpotBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JackpotBalance.swift; sourceTree = "<group>"; };
+		24EBFD2829773B030089D546 /* BetAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetAmount.swift; sourceTree = "<group>"; };
+		24EBFD2A29773BDC0089D546 /* Reel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reel.swift; sourceTree = "<group>"; };
 		7A92D1B0297616D300462055 /* SlotMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlotMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A92D1B3297616D300462055 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A92D1B5297616D300462055 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -31,9 +46,8 @@
 		7A92D1BE297616D300462055 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A92D1C0297616D400462055 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A92D1C3297616D400462055 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7ADD60AD297703530007A52E /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 		7ADD60B22977160C0007A52E /* UIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElement.swift; sourceTree = "<group>"; };
-		7ADD60B4297726200007A52E /* SceneUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneUI.swift; sourceTree = "<group>"; };
+		7ADD60B4297726200007A52E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		7AFD178E29764A8D009A19A6 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +99,6 @@
 		7ADD60AC2977032F0007A52E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				7ADD60AD297703530007A52E /* GameObject.swift */,
 				7ADD60B22977160C0007A52E /* UIElement.swift */,
 			);
 			path = Core;
@@ -94,7 +107,15 @@
 		7ADD60AF297705720007A52E /* GameObject */ = {
 			isa = PBXGroup;
 			children = (
-				7ADD60B4297726200007A52E /* SceneUI.swift */,
+				7ADD60B4297726200007A52E /* BackButton.swift */,
+				24EBFD1C2977353C0089D546 /* Background.swift */,
+				24EBFD1E297736F40089D546 /* ResetButton.swift */,
+				24EBFD20297737990089D546 /* PlayButton.swift */,
+				24EBFD22297738280089D546 /* BetControlButton.swift */,
+				24EBFD2429773A100089D546 /* Balance.swift */,
+				24EBFD2629773AA40089D546 /* JackpotBalance.swift */,
+				24EBFD2829773B030089D546 /* BetAmount.swift */,
+				24EBFD2A29773BDC0089D546 /* Reel.swift */,
 			);
 			path = GameObject;
 			sourceTree = "<group>";
@@ -173,10 +194,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ADD60AE297703530007A52E /* GameObject.swift in Sources */,
+				24EBFD23297738280089D546 /* BetControlButton.swift in Sources */,
+				24EBFD1D2977353C0089D546 /* Background.swift in Sources */,
 				7A92D1BA297616D300462055 /* GameScene.swift in Sources */,
-				7ADD60B5297726200007A52E /* SceneUI.swift in Sources */,
+				7ADD60B5297726200007A52E /* BackButton.swift in Sources */,
 				7A92D1BC297616D300462055 /* GameViewController.swift in Sources */,
+				24EBFD2929773B030089D546 /* BetAmount.swift in Sources */,
+				24EBFD2729773AA40089D546 /* JackpotBalance.swift in Sources */,
+				24EBFD2B29773BDC0089D546 /* Reel.swift in Sources */,
+				24EBFD1F297736F40089D546 /* ResetButton.swift in Sources */,
+				24EBFD2529773A100089D546 /* Balance.swift in Sources */,
+				24EBFD21297737990089D546 /* PlayButton.swift in Sources */,
 				7ADD60B32977160C0007A52E /* UIElement.swift in Sources */,
 				7A92D1B4297616D300462055 /* AppDelegate.swift in Sources */,
 			);
@@ -325,7 +353,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9MR3X2F53H;
+				DEVELOPMENT_TEAM = 5ZB2ZPTHM9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -333,12 +361,13 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ca.centennialcollege.SlotMachine;
+				PRODUCT_BUNDLE_IDENTIFIER = punmannok.SlotMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -353,7 +382,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9MR3X2F53H;
+				DEVELOPMENT_TEAM = 5ZB2ZPTHM9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -361,12 +390,13 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ca.centennialcollege.SlotMachine;
+				PRODUCT_BUNDLE_IDENTIFIER = punmannok.SlotMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -13,67 +13,75 @@ var screenWidth: CGFloat?
 var screenHeight: CGFloat?
 
 class GameScene: SKScene {
-    var background: SceneUI?
-    var backBtn: SceneUI?
-    var resetBtn: SceneUI?
-    var playBtn: SceneUI?
-    var balance: SceneUI?
-    var upBtn: SceneUI?
-    var downBtn: SceneUI?
-    var jackpotBalance: SceneUI?
-    var bg2: SceneUI?
-    var betAmount: SceneUI?
-    var rect1: SceneUI?
-    var rect2: SceneUI?
-    var rect3: SceneUI?
+    
+    var screenSize = UIScreen.main.bounds
+    var screenHeight: CGFloat?
+    var screenWidth: CGFloat?
+    
+    var background: Background?
+    var backBtn: BackButton?
+    var resetBtn: ResetButton?
+    var playBtn: PlayButton?
+    var balance: Balance?
+    var upBtn: BetControlButton?
+    var downBtn: BetControlButton?
+    var jackpotBalance: JackpotBalance?
+    var bg2: Background?
+    var betAmount: BetAmount?
+    var rect1: Reel?
+    var rect2: Reel?
+    var rect3: Reel?
 
     override func sceneDidLoad() {
+        screenHeight = screenSize.height
+        screenWidth = screenSize.width
+        print( screenHeight)
         initializeSceneUI()
     }
     
     func initializeSceneUI() {
         // instantiate background
-        background = SceneUI(imageString: "Bg", scale: 0.455, _zPosition: 0)
+        background = Background(imageString: "Bg", scale: 0.455, _zPosition: 0)
         addChild(background!)
-        bg2 = SceneUI(imageString: "bg2", scale: 1, _zPosition: 1)
-        instantiateUI(uiElement: bg2!, pos: CGPoint(x: 0, y: 116.5))
+        bg2 = Background(imageString: "bg2", scale: 1, _zPosition: 1)
+        instantiateUI(uiElement: bg2!)
 
         // instantiate buttons
-        backBtn = SceneUI(imageString: "backBtn", scale: 0.2, _zPosition: 1)
-        instantiateUI(uiElement: backBtn!, pos: CGPoint(x: -156, y: 340))
+        backBtn = BackButton(imageString: "backBtn", scale: 0.2, _zPosition: 1)
+        instantiateUI(uiElement: backBtn!)
   
-        resetBtn = SceneUI(imageString: "ResetBtn", scale: 0.26, _zPosition: 1)
-        instantiateUI(uiElement: resetBtn!, pos: CGPoint(x: -68, y: -360))
+        resetBtn = ResetButton(imageString: "ResetBtn", scale: 0.26, _zPosition: 1)
+        instantiateUI(uiElement: resetBtn!)
 
-        playBtn = SceneUI(imageString: "playBtn", scale: 0.26, _zPosition: 1)
-        instantiateUI(uiElement: playBtn!, pos: CGPoint(x: 86, y: -360))
+        playBtn = PlayButton(imageString: "playBtn", scale: 0.26, _zPosition: 1)
+        instantiateUI(uiElement: playBtn!)
 
-        upBtn = SceneUI(imageString: "UpBtn", scale: 0.16, _zPosition: 1)
-        instantiateUI(uiElement: upBtn!, pos: CGPoint(x: 95, y: -262))
+        upBtn = BetControlButton(imageString: "UpBtn", scale: 0.16, _zPosition: 1, _isIncrement: true)
+        instantiateUI(uiElement: upBtn!)
 
-        downBtn = SceneUI(imageString: "DownBtn", scale: 0.16, _zPosition: 1)
-        instantiateUI(uiElement: downBtn!, pos: CGPoint(x: 95, y: -296))
+        downBtn = BetControlButton(imageString: "DownBtn", scale: 0.16, _zPosition: 1, _isIncrement: false)
+        instantiateUI(uiElement: downBtn!)
         
         // instantiate balance/amount // rect
-        balance = SceneUI(imageString: "Balance", scale: 1, _zPosition: 1)
-        instantiateUI(uiElement: balance!, pos: CGPoint(x: 108.5, y: 340))
+        balance = Balance(imageString: "Balance", scale: 1, _zPosition: 1)
+        instantiateUI(uiElement: balance!)
         
-        jackpotBalance = SceneUI(imageString: "jackpot_balance", scale: 1, _zPosition: 1)
-        instantiateUI(uiElement: jackpotBalance!, pos: CGPoint(x: 0, y: 260))
+        jackpotBalance = JackpotBalance(imageString: "jackpot_balance", scale: 1, _zPosition: 1)
+        instantiateUI(uiElement: jackpotBalance!)
         
-        betAmount = SceneUI(imageString: "betAmount", scale: 1, _zPosition: 1)
-        instantiateUI(uiElement: betAmount!, pos: CGPoint(x: -10, y: -280))
+        betAmount = BetAmount(imageString: "betAmount", scale: 1, _zPosition: 1)
+        instantiateUI(uiElement: betAmount!)
         
-        rect1 = SceneUI(imageString: "Rectangle", scale: 1, _zPosition: 2)
-        instantiateUI(uiElement: rect1!, pos: CGPoint(x: -113, y: 116.5))
-        rect2 = SceneUI(imageString: "Rectangle", scale: 1, _zPosition: 2)
-        instantiateUI(uiElement: rect2!, pos: CGPoint(x: 0, y: 116.5))
-        rect3 = SceneUI(imageString: "Rectangle", scale: 1, _zPosition: 2)
-        instantiateUI(uiElement: rect3!, pos: CGPoint(x: 113, y: 116.5))
+        rect1 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 0)
+        instantiateUI(uiElement: rect1!)
+        rect2 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1)
+        instantiateUI(uiElement: rect2!)
+        rect3 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1)
+        instantiateUI(uiElement: rect3!)
     }
     
-    func instantiateUI(uiElement: SceneUI, pos: CGPoint = CGPoint(x: 0, y: 0)) {
-        uiElement.position = pos
+    func instantiateUI(uiElement: UIElement) {
+        uiElement.setInitialPosition(screenHeight: screenHeight!, screenWidth: screenWidth!)
         addChild(uiElement)
     }
     
