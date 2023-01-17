@@ -31,6 +31,11 @@ class GameScene: SKScene {
     var rect1: Reel?
     var rect2: Reel?
     var rect3: Reel?
+    var spin1: ReelSpin?
+    var spin2: ReelSpin?
+    var spin3: ReelSpin?
+    var spin4: ReelSpin?
+    var spin5: ReelSpin?
 
     override func sceneDidLoad() {
         screenHeight = screenSize.height
@@ -72,12 +77,24 @@ class GameScene: SKScene {
         betAmount = BetAmount(imageString: "betAmount", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: betAmount!)
         
-        rect1 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 0)
+        rect1 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 0, _numOfSpin: 5)
         instantiateUI(uiElement: rect1!)
-        rect2 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1)
+        rect2 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1, _numOfSpin: 4)
         instantiateUI(uiElement: rect2!)
-        rect3 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1)
+        rect3 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1, _numOfSpin: 3)
         instantiateUI(uiElement: rect3!)
+        
+        
+        spin1 = ReelSpin(imageString: "bye", scale: 1, _zPosition: 3, _reel: rect1!, _index: 2)
+        instantiateUI(uiElement: spin1!)
+        spin2 = ReelSpin(imageString: "beat", scale: 1, _zPosition: 3, _reel: rect1!, _index: 1)
+        instantiateUI(uiElement: spin2!)
+        spin3 = ReelSpin(imageString: "bye", scale: 1, _zPosition: 3, _reel: rect1!, _index: 0)
+        instantiateUI(uiElement: spin3!)
+        spin4 = ReelSpin(imageString: "haha", scale: 1, _zPosition: 3, _reel: rect1!, _index: 4)
+        instantiateUI(uiElement: spin4!)
+        spin5 = ReelSpin(imageString: "hehe", scale: 1, _zPosition: 3, _reel: rect1!, _index: 3)
+        instantiateUI(uiElement: spin5!)
     }
     
     func instantiateUI(uiElement: UIElement) {
@@ -107,5 +124,11 @@ class GameScene: SKScene {
         for t in touches { touchUp(atPoint: t.location(in: self)) }
     }
     
-    override func update(_ currentTime: TimeInterval) {}
+    override func update(_ currentTime: TimeInterval) {
+        spin1!.spin()
+        spin2!.spin()
+        spin3!.spin()
+        spin4!.spin()
+        spin5!.spin()
+    }
 }

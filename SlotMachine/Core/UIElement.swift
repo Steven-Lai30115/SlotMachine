@@ -8,7 +8,7 @@ class UIElement : SKSpriteNode{
     var halfWidth  : CGFloat?
     var halfHeight : CGFloat?
     
-    init(imageString: String, initialScale : CGFloat, _zPosition : CGFloat){
+    init(_name:String, imageString: String, initialScale : CGFloat, _zPosition : CGFloat){
         let texture = SKTexture(imageNamed: imageString)
         let color = UIColor.clear
         super.init(texture: texture, color: color, size: texture.size())
@@ -19,7 +19,7 @@ class UIElement : SKSpriteNode{
         height = texture.size().height * scale!
         halfWidth = width! / 2
         halfHeight = height! / 2
-        name = imageString
+        name = _name
     }
     
     required init?(coder aDecoder: NSCoder) {

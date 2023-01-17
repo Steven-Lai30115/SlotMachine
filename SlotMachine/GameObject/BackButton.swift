@@ -4,7 +4,7 @@ import SpriteKit
 class BackButton : UIElement{
     
     init(imageString : String, scale : CGFloat, _zPosition: CGFloat){
-        super.init(imageString: imageString, initialScale: scale, _zPosition: _zPosition)
+        super.init(_name: imageString, imageString: imageString, initialScale: scale, _zPosition: _zPosition)
     }
     
     required init?(coder aDecoder: NSCoder) {

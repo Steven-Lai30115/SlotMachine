@@ -5,7 +5,7 @@ class BetControlButton : UIElement{
     
     var isIncrement :Bool?
     init(imageString : String, scale : CGFloat, _zPosition: CGFloat, _isIncrement: Bool){
-        super.init(imageString: imageString, initialScale: scale, _zPosition: _zPosition)
+        super.init(_name: imageString,imageString: imageString, initialScale: scale, _zPosition: _zPosition)
         isIncrement = _isIncrement
     }
     

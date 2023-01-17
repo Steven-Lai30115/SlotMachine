@@ -3,9 +3,11 @@ import SpriteKit
 
 class Reel : UIElement{
     
+    var numberOfSpin: Int?
     var index: Int?
-    init(imageString : String, scale : CGFloat, _zPosition: CGFloat, _index: Int){
-        super.init(imageString: imageString, initialScale: scale, _zPosition: _zPosition)
+    init(imageString : String, scale : CGFloat, _zPosition: CGFloat, _index: Int, _numOfSpin: Int){
+        super.init(_name: imageString,imageString: imageString, initialScale: scale, _zPosition: _zPosition)
+        numberOfSpin = _numOfSpin
         index = _index
     }
     
