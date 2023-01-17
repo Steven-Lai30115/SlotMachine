@@ -10,7 +10,6 @@ class GameObject : SKSpriteNode{
         let texture = SKTexture(imageNamed: imageString)
         let color = UIColor.clear
         super.init(texture: texture, color: color, size: texture.size())
-        
         scale = initialScale
         setScale(scale!)
         width = texture.size().width * scale!
