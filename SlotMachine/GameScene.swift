@@ -8,11 +8,18 @@
 import SpriteKit
 import GameplayKit
 
+let screeSize = UIScreen.main.bounds
+var screenWidth: CGFloat?
+var screenHeight: CGFloat?
+
 class GameScene: SKScene {
     
+    var background: Background?
 
     override func sceneDidLoad() {
-
+        
+        background = Background()
+        addChild(background!)
     }
     
     

@@ -1,8 +1,14 @@
-//
-//  Background .swift
-//  SlotMachine
-//
-//  Created by chin wai lai on 17/1/2023.
-//
+import GameplayKit
+import SpriteKit
 
-import Foundation
+class Background : GameObject{
+    
+    init(){
+        super.init(imageString: "Bg", initialScale: 0.455)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
