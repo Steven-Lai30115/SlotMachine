@@ -23,7 +23,7 @@ class ReelImage : UIElement{
     }
     
     override func setInitialPosition(screenHeight: CGFloat, screenWidth: CGFloat){
-        
+        isHidden = false
         position.x = reel!.position.x
         position.y = reel!.position.y + height! * CGFloat(index!)
         if( position.y >= reel!.position.y + reel!.halfHeight! + margin ||
