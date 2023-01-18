@@ -21,8 +21,8 @@ class GameScene: SKScene {
     
     // balance
     var balance: Balance?
-    var balanceVal = 0
-    let balanceLabel : SKLabel = SKLabel("0", position: CGPoint(x: 95, y: 325))
+    var balanceVal = 100
+    let balanceLabel : SKLabel = SKLabel("0", position: CGPoint(x: 105, y: 325))
     
     
     var upBtn: BetControlButton?
@@ -125,7 +125,7 @@ class GameScene: SKScene {
         betLabel.text = String(bet)
         self.addChild(betLabel)
         
-        betLabel.text = String(balanceVal)
+        balanceLabel.text = String(balanceVal)
         self.addChild(balanceLabel)
         
         jackpotLabel.text = String(jackpot)
@@ -135,8 +135,10 @@ class GameScene: SKScene {
     func touchDown(atPoint pos: CGPoint) {
         let node = self.atPoint(pos)
         if node.name == "playBtn" {
-            if bet > 0 && !playBtn!.isClicked {
+            if balanceVal > bet && bet > 0 && !playBtn!.isClicked {
                 playBtn!.isClicked = true
+                balanceVal -= bet
+                balanceLabel.text = String(balanceVal)
                 let seconds = SKAction.wait(forDuration: 5)
                 let stop = SKAction.run { self.playBtn!.isClicked = false }
                 let sequence = SKAction.sequence([seconds, stop])
@@ -146,7 +148,7 @@ class GameScene: SKScene {
         } else if node.name == "ResetBtn" {
             bet = 0
             playBtn!.isClicked = false
-            betLabel.text = String(0)
+            betLabel.text = String(bet)
             reel1?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
             reel2?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
             reel3?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
