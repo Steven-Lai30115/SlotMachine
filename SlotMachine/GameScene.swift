@@ -262,6 +262,7 @@ class GameScene: SKScene {
         if node.name == "playBtn" {
             playBtn!.isClicked = true
         } else if node.name == "ResetBtn" {
+            bet = 0
             playBtn!.isClicked = false
             betLabel.text = String(0)
         } else if node.name == "backBtn" {
