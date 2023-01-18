@@ -33,15 +33,26 @@ class GameScene: SKScene {
     var rect3: Reel?
     
     
-    // Column 1 Spin
-    var column1Spin1: ReelSpin?
+    // reel 1 Spin
+    var reel1Spin1: ReelSpin?
+    var reel1Spin2: ReelSpin?
+    var reel1Spin3: ReelSpin?
+    var reel1Spin4: ReelSpin?
+    var reel1Spin5: ReelSpin?
     
-    // Column 2 Spin
-    var column2Spin1: ReelSpin?
-    var column2Spin2: ReelSpin?
-    var column2Spin3: ReelSpin?
-    var column2Spin4: ReelSpin?
-    var column2Spin5: ReelSpin?
+    // reel 2 Spin
+    var reel2Spin1: ReelSpin?
+    var reel2Spin2: ReelSpin?
+    var reel2Spin3: ReelSpin?
+    var reel2Spin4: ReelSpin?
+    var reel2Spin5: ReelSpin?
+    
+    // reel 3 Spin
+    var reel3Spin1: ReelSpin?
+    var reel3Spin2: ReelSpin?
+    var reel3Spin3: ReelSpin?
+    var reel3Spin4: ReelSpin?
+    var reel3Spin5: ReelSpin?
 
     override func sceneDidLoad() {
         screenHeight = screenSize.height
@@ -82,72 +93,154 @@ class GameScene: SKScene {
         betAmount = BetAmount(imageString: "betAmount", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: betAmount!)
         
-        rect1 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1, _numOfSpin: 4)
+        rect1 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1, _numOfSpin: 5)
         instantiateUI(uiElement: rect1!)
         rect2 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 0, _numOfSpin: 5)
         instantiateUI(uiElement: rect2!)
-        rect3 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1, _numOfSpin: 3)
+        rect3 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1, _numOfSpin: 5)
         instantiateUI(uiElement: rect3!)
         
         
-        // Reel 1
-        column1Spin1 = ReelSpin(
-            imageString: "hehe",
+        // reel 1
+        reel1Spin1 = ReelSpin(
+            imageString: "bye",
+            scale: 1,
+            _zPosition: 3,
+            _reel: rect1!,
+            _index: 2
+        )
+        instantiateUI(uiElement: reel1Spin1!)
+        
+        reel1Spin2 = ReelSpin(
+            imageString: "beat",
             scale: 1,
             _zPosition: 3,
             _reel: rect1!,
             _index: 1
         )
-        instantiateUI(uiElement: column1Spin1!)
+        instantiateUI(uiElement: reel1Spin2!)
+        
+        reel1Spin3 = ReelSpin(
+            imageString: "bye",
+            scale: 1,
+            _zPosition: 3,
+            _reel: rect1!,
+            _index: 0
+        )
+        instantiateUI(uiElement: reel1Spin3!)
+        
+        reel1Spin4 = ReelSpin(
+            imageString: "haha",
+            scale: 1,
+            _zPosition: 3,
+            _reel: rect1!,
+            _index: 4
+        )
+        instantiateUI(uiElement: reel1Spin4!)
+        
+        reel1Spin5 = ReelSpin(
+            imageString: "hehe",
+            scale: 1,
+            _zPosition: 3,
+            _reel: rect1!,
+            _index: 3
+        )
+        instantiateUI(uiElement: reel1Spin5!)
         
         
         
         // Reel 2
-        column2Spin1 = ReelSpin(
+        reel2Spin1 = ReelSpin(
             imageString: "bye",
             scale: 1,
             _zPosition: 3,
             _reel: rect2!,
             _index: 2
         )
-        instantiateUI(uiElement: column2Spin1!)
+        instantiateUI(uiElement: reel2Spin1!)
         
-        column2Spin2 = ReelSpin(
+        reel2Spin2 = ReelSpin(
             imageString: "beat",
             scale: 1,
             _zPosition: 3,
             _reel: rect2!,
             _index: 1
         )
-        instantiateUI(uiElement: column2Spin2!)
+        instantiateUI(uiElement: reel2Spin2!)
         
-        column2Spin3 = ReelSpin(
+        reel2Spin3 = ReelSpin(
             imageString: "bye",
             scale: 1,
             _zPosition: 3,
             _reel: rect2!,
             _index: 0
         )
-        instantiateUI(uiElement: column2Spin3!)
+        instantiateUI(uiElement: reel2Spin3!)
         
-        column2Spin4 = ReelSpin(
+        reel2Spin4 = ReelSpin(
             imageString: "haha",
             scale: 1,
             _zPosition: 3,
             _reel: rect2!,
             _index: 4
         )
-        instantiateUI(uiElement: column2Spin4!)
+        instantiateUI(uiElement: reel2Spin4!)
         
-        column2Spin5 = ReelSpin(
+        reel2Spin5 = ReelSpin(
             imageString: "hehe",
             scale: 1,
             _zPosition: 3,
             _reel: rect2!,
             _index: 3
         )
-        instantiateUI(uiElement: column2Spin5!)
+        instantiateUI(uiElement: reel2Spin5!)
         
+        
+        
+        reel3Spin1 = ReelSpin(
+            imageString: "bye",
+            scale: 1,
+            _zPosition: 3,
+            _reel: rect3!,
+            _index: 2
+        )
+        instantiateUI(uiElement: reel3Spin1!)
+        
+        reel3Spin2 = ReelSpin(
+            imageString: "beat",
+            scale: 1,
+            _zPosition: 3,
+            _reel: rect3!,
+            _index: 1
+        )
+        instantiateUI(uiElement: reel3Spin2!)
+        
+        reel3Spin3 = ReelSpin(
+            imageString: "bye",
+            scale: 1,
+            _zPosition: 3,
+            _reel: rect3!,
+            _index: 0
+        )
+        instantiateUI(uiElement: reel3Spin3!)
+        
+        reel3Spin4 = ReelSpin(
+            imageString: "haha",
+            scale: 1,
+            _zPosition: 3,
+            _reel: rect3!,
+            _index: 4
+        )
+        instantiateUI(uiElement: reel3Spin4!)
+        
+        reel3Spin5 = ReelSpin(
+            imageString: "hehe",
+            scale: 1,
+            _zPosition: 3,
+            _reel: rect3!,
+            _index: 3
+        )
+        instantiateUI(uiElement: reel3Spin5!)
         
     }
     
@@ -180,13 +273,24 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         
-        column1Spin1!.spin()
+        reel1Spin1!.spin()
+        reel1Spin2!.spin()
+        reel1Spin3!.spin()
+        reel1Spin4!.spin()
+        reel1Spin5!.spin()
         
         
-//        column2Spin1!.spin()
-//        column2Spin2!.spin()
-//        column2Spin3!.spin()
-//        column2Spin4!.spin()
-//        column2Spin5!.spin()
+        reel2Spin1!.spin()
+        reel2Spin2!.spin()
+        reel2Spin3!.spin()
+        reel2Spin4!.spin()
+        reel2Spin5!.spin()
+        
+        
+        reel3Spin1!.spin()
+        reel3Spin2!.spin()
+        reel3Spin3!.spin()
+        reel3Spin4!.spin()
+        reel3Spin5!.spin()
     }
 }
