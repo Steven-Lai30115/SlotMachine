@@ -40,30 +40,9 @@ class GameScene: SKScene {
     var bet = 0
     let betLabel = SKLabelNode(fontNamed:"Chalkduster")
     
-    var rect1: Reel?
-    var rect2: Reel?
-    var rect3: Reel?
-    
-    // reel 1 Spin
-    var reel1Spin1: ReelSpin?
-    var reel1Spin2: ReelSpin?
-    var reel1Spin3: ReelSpin?
-//    var reel1Spin4: ReelSpin?
-//    var reel1Spin5: ReelSpin?
-    
-    // reel 2 Spin
-    var reel2Spin1: ReelSpin?
-    var reel2Spin2: ReelSpin?
-    var reel2Spin3: ReelSpin?
-    var reel2Spin4: ReelSpin?
-    var reel2Spin5: ReelSpin?
-    
-    // reel 3 Spin
-    var reel3Spin1: ReelSpin?
-    var reel3Spin2: ReelSpin?
-    var reel3Spin3: ReelSpin?
-    var reel3Spin4: ReelSpin?
-//    var reel3Spin5: ReelSpin?
+    var reel1: ReelSpin?
+    var reel2: ReelSpin?
+    var reel3: ReelSpin?
 
     override func sceneDidLoad() {
         screenHeight = screenSize.height
@@ -105,125 +84,36 @@ class GameScene: SKScene {
         betAmount = BetAmount(imageString: "betAmount", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: betAmount!)
         
-        rect1 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1, _numOfSpin: 3)
-        instantiateUI(uiElement: rect1!)
-        rect2 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 0, _numOfSpin: 5)
-        instantiateUI(uiElement: rect2!)
-        rect3 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1, _numOfSpin: 4)
-        instantiateUI(uiElement: rect3!)
-        
-        
         // reel 1
-        reel1Spin1 = ReelSpin(
-            imageString: "bye",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect1!,
-            _index: 2
+        var images = ["bye", "beat", "bye", "bye", "beat"]
+        reel1 = ReelSpin(
+            reel: Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1, _numOfSpin: images.count),
+            images: images
         )
-        instantiateUI(uiElement: reel1Spin1!)
+        instantiateUI(uiElement: reel1!.reel!)
+        for reelImage in reel1!.realImages {
+            instantiateUI(uiElement: reelImage)
+        }
         
-        reel1Spin2 = ReelSpin(
-            imageString: "beat",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect1!,
-            _index: 1
+        images = ["bye", "beat", "bye", "haha", "hehe"]
+        reel2 = ReelSpin(
+            reel: Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 0, _numOfSpin: images.count),
+            images:images
         )
-        instantiateUI(uiElement: reel1Spin2!)
+        instantiateUI(uiElement: reel2!.reel!)
+        for reelImage in reel2!.realImages {
+            instantiateUI(uiElement: reelImage)
+        }
         
-        reel1Spin3 = ReelSpin(
-            imageString: "bye",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect1!,
-            _index: 0
+        images = ["bye", "beat", "bye", "haha", "hehe"]
+        reel3 = ReelSpin(
+            reel: Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1, _numOfSpin: images.count),
+            images:images
         )
-        instantiateUI(uiElement: reel1Spin3!)
-        
-        // Reel 2
-        reel2Spin1 = ReelSpin(
-            imageString: "bye",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect2!,
-            _index: 2
-        )
-        instantiateUI(uiElement: reel2Spin1!)
-        
-        reel2Spin2 = ReelSpin(
-            imageString: "beat",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect2!,
-            _index: 1
-        )
-        instantiateUI(uiElement: reel2Spin2!)
-        
-        reel2Spin3 = ReelSpin(
-            imageString: "bye",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect2!,
-            _index: 0
-        )
-        instantiateUI(uiElement: reel2Spin3!)
-        
-        reel2Spin4 = ReelSpin(
-            imageString: "haha",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect2!,
-            _index: 4
-        )
-        instantiateUI(uiElement: reel2Spin4!)
-        
-        reel2Spin5 = ReelSpin(
-            imageString: "hehe",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect2!,
-            _index: 3
-        )
-        instantiateUI(uiElement: reel2Spin5!)
-        
-        
-        
-        reel3Spin1 = ReelSpin(
-            imageString: "bye",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect3!,
-            _index: 2
-        )
-        instantiateUI(uiElement: reel3Spin1!)
-        
-        reel3Spin2 = ReelSpin(
-            imageString: "beat",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect3!,
-            _index: 1
-        )
-        instantiateUI(uiElement: reel3Spin2!)
-        
-        reel3Spin3 = ReelSpin(
-            imageString: "bye",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect3!,
-            _index: 0
-        )
-        instantiateUI(uiElement: reel3Spin3!)
-        
-        reel3Spin4 = ReelSpin(
-            imageString: "haha",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect3!,
-            _index: 4
-        )
-        instantiateUI(uiElement: reel3Spin4!)
+        instantiateUI(uiElement: reel3!.reel!)
+        for reelImage in reel3!.realImages {
+            instantiateUI(uiElement: reelImage)
+        }
     }
     
     func instantiateUI(uiElement: UIElement) {
@@ -301,21 +191,17 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         if playBtn!.isClicked {
-            reel1Spin1!.spin()
-            reel1Spin2!.spin()
-            reel1Spin3!.spin()
-
-            reel2Spin1!.spin()
-            reel2Spin2!.spin()
-            reel2Spin3!.spin()
-            reel2Spin4!.spin()
-            reel2Spin5!.spin()
-
-
-            reel3Spin1!.spin()
-            reel3Spin2!.spin()
-            reel3Spin3!.spin()
-            reel3Spin4!.spin()
+            for img in reel1!.realImages {
+                img.spin()
+            }
+            
+            for img in reel2!.realImages {
+                img.spin()
+            }
+            
+            for img in reel3!.realImages {
+                img.spin()
+            }
         }
     }
 }

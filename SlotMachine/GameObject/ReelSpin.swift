@@ -1,51 +1,30 @@
+//
+//  ReelSpin.swift
+//  SlotMachine
+//
+//  Created by Charlene Cheung on 18/1/2023.
+//
+
 import GameplayKit
 import SpriteKit
 
-class ReelSpin : UIElement{
+class ReelSpin {
     
     var reel: Reel?
-    var index: Int8?
-    var topBoundary: CGFloat?
-    var bottomBoundary: CGFloat?
-    let margin = 16.0
-    var spinSpeed = 20.0
+    var realImages: [ReelImage] = []
     
-    init(imageString : String, scale : CGFloat, _zPosition: CGFloat, _reel: Reel, _index: Int8){
-        super.init(_name: "\(imageString)\(String(describing: _reel.index))\(_index)", imageString: imageString, initialScale: scale, _zPosition: _zPosition)
-        reel = _reel
-        index = _index
-        height = _reel.height
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func setInitialPosition(screenHeight: CGFloat, screenWidth: CGFloat){
-        
-        position.x = reel!.position.x
-        position.y = reel!.position.y + height! * CGFloat(index!)
-        if( position.y >= reel!.position.y + reel!.halfHeight! + margin ||
-            position.y <= reel!.position.y - reel!.halfHeight! + margin) {
-            isHidden = true
-        }
-    }
-    
-    func resetPositionY() {
-        position.y = reel!.position.y + height! * CGFloat(reel!.numberOfSpin!-2) + reel!.halfHeight!
-    }
-    
-    func spin(){
-        position.y -= spinSpeed
-        if ( position.y <= reel!.position.y - reel!.height! - reel!.halfHeight! - margin)  {
-            resetPositionY()
-        }
-        else if( position.y <= reel!.position.y - reel!.halfHeight! + margin) {
-            isHidden = true
-        }
-        else if( position.y <= reel!.position.y + reel!.halfHeight! - margin) {
-            isHidden = false
+    init(reel: Reel, images: [String]) {
+        self.reel = reel
+        for (index, imgStr) in images.enumerated() {
+            realImages.append(
+                ReelImage(
+                    imageString: imgStr,
+                    scale: 1,
+                    _zPosition: 3,
+                    _reel: reel,
+                    _index: Int8(index)
+                )
+            )
         }
     }
 }
