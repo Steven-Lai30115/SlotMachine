@@ -1,8 +1,7 @@
 import GameplayKit
 import SpriteKit
 
-class ResetButton : UIElement{
-    
+class ResetButton : UIElement{    
     init(imageString : String, scale : CGFloat, _zPosition: CGFloat){
         super.init(_name: imageString, imageString: imageString, initialScale: scale, _zPosition: _zPosition)
     }

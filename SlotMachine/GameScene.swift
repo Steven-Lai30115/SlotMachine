@@ -8,10 +8,6 @@
 import GameplayKit
 import SpriteKit
 
-let screeSize = UIScreen.main.bounds
-var screenWidth: CGFloat?
-var screenHeight: CGFloat?
-
 class GameScene: SKScene {
     
     var screenSize = UIScreen.main.bounds
@@ -22,23 +18,38 @@ class GameScene: SKScene {
     var backBtn: BackButton?
     var resetBtn: ResetButton?
     var playBtn: PlayButton?
+    
+    // balance
     var balance: Balance?
+    var balanceVal = 0
+    let balanceLabel = SKLabelNode(fontNamed:"Chalkduster")
+    
+    
     var upBtn: BetControlButton?
     var downBtn: BetControlButton?
+    
+    // jackport
     var jackpotBalance: JackpotBalance?
+    var jackpot = 0
+    let jackpotLabel = SKLabelNode(fontNamed:"Chalkduster")
+    
     var bg2: Background?
+    
+    // bet
     var betAmount: BetAmount?
+    var bet = 0
+    let betLabel = SKLabelNode(fontNamed:"Chalkduster")
+    
     var rect1: Reel?
     var rect2: Reel?
     var rect3: Reel?
-    
     
     // reel 1 Spin
     var reel1Spin1: ReelSpin?
     var reel1Spin2: ReelSpin?
     var reel1Spin3: ReelSpin?
-    var reel1Spin4: ReelSpin?
-    var reel1Spin5: ReelSpin?
+//    var reel1Spin4: ReelSpin?
+//    var reel1Spin5: ReelSpin?
     
     // reel 2 Spin
     var reel2Spin1: ReelSpin?
@@ -52,7 +63,7 @@ class GameScene: SKScene {
     var reel3Spin2: ReelSpin?
     var reel3Spin3: ReelSpin?
     var reel3Spin4: ReelSpin?
-    var reel3Spin5: ReelSpin?
+//    var reel3Spin5: ReelSpin?
 
     override func sceneDidLoad() {
         screenHeight = screenSize.height
@@ -86,6 +97,7 @@ class GameScene: SKScene {
         // instantiate balance/amount // rect
         balance = Balance(imageString: "Balance", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: balance!)
+
         
         jackpotBalance = JackpotBalance(imageString: "jackpot_balance", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: jackpotBalance!)
@@ -93,11 +105,11 @@ class GameScene: SKScene {
         betAmount = BetAmount(imageString: "betAmount", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: betAmount!)
         
-        rect1 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1, _numOfSpin: 5)
+        rect1 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1, _numOfSpin: 3)
         instantiateUI(uiElement: rect1!)
         rect2 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 0, _numOfSpin: 5)
         instantiateUI(uiElement: rect2!)
-        rect3 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1, _numOfSpin: 5)
+        rect3 = Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1, _numOfSpin: 4)
         instantiateUI(uiElement: rect3!)
         
         
@@ -128,26 +140,6 @@ class GameScene: SKScene {
             _index: 0
         )
         instantiateUI(uiElement: reel1Spin3!)
-        
-        reel1Spin4 = ReelSpin(
-            imageString: "haha",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect1!,
-            _index: 4
-        )
-        instantiateUI(uiElement: reel1Spin4!)
-        
-        reel1Spin5 = ReelSpin(
-            imageString: "hehe",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect1!,
-            _index: 3
-        )
-        instantiateUI(uiElement: reel1Spin5!)
-        
-        
         
         // Reel 2
         reel2Spin1 = ReelSpin(
@@ -232,16 +224,6 @@ class GameScene: SKScene {
             _index: 4
         )
         instantiateUI(uiElement: reel3Spin4!)
-        
-        reel3Spin5 = ReelSpin(
-            imageString: "hehe",
-            scale: 1,
-            _zPosition: 3,
-            _reel: rect3!,
-            _index: 3
-        )
-        instantiateUI(uiElement: reel3Spin5!)
-        
     }
     
     func instantiateUI(uiElement: UIElement) {
@@ -249,7 +231,49 @@ class GameScene: SKScene {
         addChild(uiElement)
     }
     
-    func touchDown(atPoint pos: CGPoint) {}
+    override func didMove(to view: SKView) {
+        
+        betLabel.text = String(bet)
+        betLabel.fontSize = 45
+        betLabel.zPosition = 3
+        betLabel.position = CGPoint(x: 0, y: -270)
+        self.addChild(betLabel)
+        
+        
+        balanceLabel.text = String(balanceVal)
+        balanceLabel.fontSize = 45
+        balanceLabel.zPosition = 3
+        balanceLabel.position = CGPoint(x: 90, y: 325)
+        self.addChild(balanceLabel)
+        
+        
+        jackpotLabel.text = String(jackpot)
+        jackpotLabel.fontSize = 45
+        jackpotLabel.zPosition = 3
+        jackpotLabel.position = CGPoint(x: 0, y: 240)
+        self.addChild(jackpotLabel)
+    }
+    
+    func touchDown(atPoint pos: CGPoint) {
+        let node = self.atPoint(pos)
+        if node.name == "playBtn" {
+            playBtn!.isClicked = true
+        } else if node.name == "ResetBtn" {
+            playBtn!.isClicked = false
+            betLabel.text = String(0)
+        } else if node.name == "backBtn" {
+            exit(0)
+        } else if node.name == "UpBtn" {
+            // add condition
+            bet = bet + 5
+            betLabel.text = String(bet)
+        } else if node.name == "DownBtn" {
+            if bet >= 5  {
+                bet = bet - 5
+                betLabel.text = String(bet)
+            }
+        }
+    }
     
     func touchMoved(toPoint pos: CGPoint) {}
     
@@ -272,25 +296,22 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        
-        reel1Spin1!.spin()
-        reel1Spin2!.spin()
-        reel1Spin3!.spin()
-        reel1Spin4!.spin()
-        reel1Spin5!.spin()
-        
-        
-        reel2Spin1!.spin()
-        reel2Spin2!.spin()
-        reel2Spin3!.spin()
-        reel2Spin4!.spin()
-        reel2Spin5!.spin()
-        
-        
-        reel3Spin1!.spin()
-        reel3Spin2!.spin()
-        reel3Spin3!.spin()
-        reel3Spin4!.spin()
-        reel3Spin5!.spin()
+        if playBtn!.isClicked {
+            reel1Spin1!.spin()
+            reel1Spin2!.spin()
+            reel1Spin3!.spin()
+
+            reel2Spin1!.spin()
+            reel2Spin2!.spin()
+            reel2Spin3!.spin()
+            reel2Spin4!.spin()
+            reel2Spin5!.spin()
+
+
+            reel3Spin1!.spin()
+            reel3Spin2!.spin()
+            reel3Spin3!.spin()
+            reel3Spin4!.spin()
+        }
     }
 }

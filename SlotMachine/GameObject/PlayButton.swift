@@ -3,8 +3,10 @@ import SpriteKit
 
 class PlayButton : UIElement{
     
+    var isClicked: Bool = false
+    
     init(imageString : String, scale : CGFloat, _zPosition: CGFloat){
-        super.init(_name: imageString,imageString: imageString, initialScale: scale, _zPosition: _zPosition)
+        super.init(_name: imageString, imageString: imageString, initialScale: scale, _zPosition: _zPosition)
     }
     
     required init?(coder aDecoder: NSCoder) {
