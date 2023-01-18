@@ -237,6 +237,7 @@ class GameScene: SKScene {
         betLabel.fontSize = 45
         betLabel.zPosition = 3
         betLabel.position = CGPoint(x: 0, y: -270)
+        betLabel.fontColor = UIColor.black
         self.addChild(betLabel)
         
         
@@ -244,6 +245,7 @@ class GameScene: SKScene {
         balanceLabel.fontSize = 45
         balanceLabel.zPosition = 3
         balanceLabel.position = CGPoint(x: 90, y: 325)
+        balanceLabel.fontColor = UIColor.black
         self.addChild(balanceLabel)
         
         
@@ -251,6 +253,7 @@ class GameScene: SKScene {
         jackpotLabel.fontSize = 45
         jackpotLabel.zPosition = 3
         jackpotLabel.position = CGPoint(x: 0, y: 240)
+        jackpotLabel.fontColor = UIColor.black
         self.addChild(jackpotLabel)
     }
     
