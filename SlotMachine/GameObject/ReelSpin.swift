@@ -27,4 +27,10 @@ class ReelSpin {
             )
         }
     }
+    
+    func reset(screenHeight: CGFloat, screenWidth: CGFloat) {
+        for reelImg in realImages {
+            reelImg.setInitialPosition(screenHeight: screenHeight, screenWidth: screenWidth)
+        }
+    }
 }

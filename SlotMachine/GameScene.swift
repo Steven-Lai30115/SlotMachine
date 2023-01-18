@@ -22,7 +22,7 @@ class GameScene: SKScene {
     // balance
     var balance: Balance?
     var balanceVal = 0
-    let balanceLabel = SKLabelNode(fontNamed:"Chalkduster")
+    let balanceLabel : SKLabel = SKLabel("0", position: CGPoint(x: 95, y: 325))
     
     
     var upBtn: BetControlButton?
@@ -31,14 +31,14 @@ class GameScene: SKScene {
     // jackport
     var jackpotBalance: JackpotBalance?
     var jackpot = 0
-    let jackpotLabel = SKLabelNode(fontNamed:"Chalkduster")
+    let jackpotLabel : SKLabel = SKLabel("0", position: CGPoint(x: 0, y: 242))
     
     var bg2: Background?
     
     // bet
     var betAmount: BetAmount?
     var bet = 0
-    let betLabel = SKLabelNode(fontNamed:"Chalkduster")
+    let betLabel: SKLabel = SKLabel("0", position: CGPoint(x: -5, y: -273))
     
     var reel1: ReelSpin?
     var reel2: ReelSpin?
@@ -85,7 +85,7 @@ class GameScene: SKScene {
         instantiateUI(uiElement: betAmount!)
         
         // reel 1
-        var images = ["bye", "beat", "bye", "bye", "beat"]
+        var images = ["bye", "beat", "bye", "bye", "beat", "bye", "beat"]
         reel1 = ReelSpin(
             reel: Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1, _numOfSpin: images.count),
             images: images
@@ -105,7 +105,7 @@ class GameScene: SKScene {
             instantiateUI(uiElement: reelImage)
         }
         
-        images = ["bye", "beat", "bye", "haha", "hehe"]
+        images = ["bye", "beat", "bye", "haha", "hehe", "beat"]
         reel3 = ReelSpin(
             reel: Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1, _numOfSpin: images.count),
             images:images
@@ -122,39 +122,34 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        
         betLabel.text = String(bet)
-        betLabel.fontSize = 45
-        betLabel.zPosition = 3
-        betLabel.position = CGPoint(x: 0, y: -270)
-        betLabel.fontColor = UIColor.black
         self.addChild(betLabel)
         
-        
-        balanceLabel.text = String(balanceVal)
-        balanceLabel.fontSize = 45
-        balanceLabel.zPosition = 3
-        balanceLabel.position = CGPoint(x: 90, y: 325)
-        balanceLabel.fontColor = UIColor.black
+        betLabel.text = String(balanceVal)
         self.addChild(balanceLabel)
         
-        
         jackpotLabel.text = String(jackpot)
-        jackpotLabel.fontSize = 45
-        jackpotLabel.zPosition = 3
-        jackpotLabel.position = CGPoint(x: 0, y: 240)
-        jackpotLabel.fontColor = UIColor.black
         self.addChild(jackpotLabel)
     }
     
     func touchDown(atPoint pos: CGPoint) {
         let node = self.atPoint(pos)
         if node.name == "playBtn" {
-            playBtn!.isClicked = true
+            if bet > 0 && !playBtn!.isClicked {
+                playBtn!.isClicked = true
+                let seconds = SKAction.wait(forDuration: 5)
+                let stop = SKAction.run { self.playBtn!.isClicked = false }
+                let sequence = SKAction.sequence([seconds, stop])
+                let action = SKAction.repeat(sequence, count: 1)
+                self.run(action)
+            }
         } else if node.name == "ResetBtn" {
             bet = 0
             playBtn!.isClicked = false
             betLabel.text = String(0)
+            reel1?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
+            reel2?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
+            reel3?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
         } else if node.name == "backBtn" {
             exit(0)
         } else if node.name == "UpBtn" {
@@ -190,7 +185,7 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if playBtn!.isClicked {
+        if playBtn!.isClicked && bet > 0 {
             for img in reel1!.realImages {
                 img.spin()
             }
