@@ -32,5 +32,9 @@ class ReelSpin {
         for reelImg in realImages {
             reelImg.setInitialPosition(screenHeight: screenHeight, screenWidth: screenWidth)
         }
+        
+    }
+    func getSpinResult() -> ReelImage? {
+        return reel!.spinResult
     }
 }

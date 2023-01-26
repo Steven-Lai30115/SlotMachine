@@ -41,6 +41,7 @@ class ReelImage : UIElement{
             && position.y > reel!.position.y - reel!.halfHeight! ){
             position.y = reel!.position.y
             isHidden = false
+            reel!.setSpinResult(_spinResult: self)
         } else { isHidden = true }
     }
     

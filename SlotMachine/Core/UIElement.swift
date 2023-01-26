@@ -2,6 +2,7 @@ import GameplayKit
 import SpriteKit
 
 class UIElement : SKSpriteNode{
+    var image: String?
     var scale : CGFloat?
     var width  : CGFloat?
     var height : CGFloat?
@@ -20,6 +21,7 @@ class UIElement : SKSpriteNode{
         halfWidth = width! / 2
         halfHeight = height! / 2
         name = _name
+        image = imageString
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -10,7 +10,7 @@ class Reel : UIElement{
         numberOfSpin = _numOfSpin
         index = _index
     }
-    
+    var spinResult: ReelImage?
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -25,5 +25,9 @@ class Reel : UIElement{
         }
         position.y = 116.5
         
+    }
+    
+    func setSpinResult(_spinResult: ReelImage){
+        spinResult = _spinResult
     }
 }

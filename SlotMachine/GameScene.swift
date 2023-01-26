@@ -151,6 +151,9 @@ class GameScene: SKScene {
                     for img in self.reel3!.realImages {
                         img.setFinalPosition()
                     }
+                    
+                    self.checkSpinResult(img1: self.reel1?.getSpinResult()?.image, img2: self.reel2?.getSpinResult()?.image,
+                                    img3: self.reel3?.getSpinResult()?.image)
                 }
                 let sequence = SKAction.sequence([seconds, stop])
                 let action = SKAction.repeat(sequence, count: 1)
@@ -213,6 +216,28 @@ class GameScene: SKScene {
             for img in reel3!.realImages {
                 img.spin()
             }
+        }
+    }
+    
+    func checkSpinResult (img1: String?, img2: String?, img3: String?) {
+        if( img1! == img2! && img2! == img3! ){
+            // 3 images same, wins jackpot
+            balanceVal = balanceVal + jackpot
+            balanceLabel.text = String(balanceVal)
+            jackpot = 0
+            jackpotLabel.text = String(jackpot)
+        } else if( img1! == img2! || img2! == img3! || img1! == img3!){
+            // 2 images same, wins the bet, jackpot will store the bet
+            balanceVal = balanceVal + bet + bet
+            balanceLabel.text = String(balanceVal)
+            jackpot = jackpot + bet
+            jackpotLabel.text = String(jackpot)
+        } else {
+            // no images same, lose the bet
+            balanceVal = balanceVal - bet
+            balanceLabel.text = String(balanceVal)
+            jackpot = jackpot + bet
+            jackpotLabel.text = String(jackpot)
         }
     }
 }
