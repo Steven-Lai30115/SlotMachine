@@ -135,7 +135,7 @@ class GameScene: SKScene {
     func touchDown(atPoint pos: CGPoint) {
         let node = self.atPoint(pos)
         if node.name == "playBtn" {
-            if balanceVal > bet && bet > 0 && !playBtn!.isClicked {
+            if !playBtn!.isClicked && !playBtn!.isDisabled {
                 playBtn!.isClicked = true
                 balanceVal -= bet
                 balanceLabel.text = String(balanceVal)
@@ -187,7 +187,10 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if playBtn!.isClicked && bet > 0 {
+        if( balanceVal > bet && bet > 0 ) { playBtn!.enable() }
+        else { playBtn!.disable() }
+        
+        if playBtn!.isClicked {
             for img in reel1!.realImages {
                 img.spin()
             }
