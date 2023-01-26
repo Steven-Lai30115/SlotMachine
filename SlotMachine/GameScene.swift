@@ -140,7 +140,18 @@ class GameScene: SKScene {
                 balanceVal -= bet
                 balanceLabel.text = String(balanceVal)
                 let seconds = SKAction.wait(forDuration: 5)
-                let stop = SKAction.run { self.playBtn!.isClicked = false }
+                let stop = SKAction.run {
+                    self.playBtn!.isClicked = false
+                    for img in self.reel1!.realImages {
+                        img.setFinalPosition()
+                    }
+                    for img in self.reel2!.realImages {
+                        img.setFinalPosition()
+                    }
+                    for img in self.reel3!.realImages {
+                        img.setFinalPosition()
+                    }
+                }
                 let sequence = SKAction.sequence([seconds, stop])
                 let action = SKAction.repeat(sequence, count: 1)
                 self.run(action)

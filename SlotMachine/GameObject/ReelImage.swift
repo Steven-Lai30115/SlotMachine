@@ -36,6 +36,14 @@ class ReelImage : UIElement{
         position.y = reel!.position.y + height! * CGFloat(reel!.numberOfSpin!-2) + reel!.halfHeight!
     }
     
+    func setFinalPosition() {
+        if( position.y < reel!.position.y + reel!.halfHeight!
+            && position.y > reel!.position.y - reel!.halfHeight! ){
+            position.y = reel!.position.y
+            isHidden = false
+        } else { isHidden = true }
+    }
+    
     func spin(){
         position.y -= spinSpeed
         if ( position.y <= reel!.position.y - reel!.height! - reel!.halfHeight! - margin)  {
