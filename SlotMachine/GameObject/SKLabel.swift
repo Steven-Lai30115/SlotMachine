@@ -9,9 +9,14 @@ import SpriteKit
 
 class SKLabel: SKLabelNode {
     
-    init(_ text: String, position: CGPoint) {
+    var defaultVal: Int = 0;
+    var value: Int = 0;
+    
+    init(position: CGPoint, defaultVal: Int) {
         super.init()
-        self.text = String(text)
+        self.defaultVal = defaultVal
+        self.value = defaultVal
+        self.text = String(value)
         self.fontSize = 45
         self.zPosition = 3
         self.position = position
@@ -21,5 +26,24 @@ class SKLabel: SKLabelNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateLabel() {
+        self.text = String(self.value)
+    }
+    
+    func reset() {
+        self.value = self.defaultVal
+        self.updateLabel()
+    }
+    
+    func add(val: Int) {
+        self.value += val
+        self.updateLabel()
+    }
+    
+    func substract(val: Int) {
+        self.value -= val
+        self.updateLabel()
     }
 }
