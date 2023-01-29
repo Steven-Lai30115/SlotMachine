@@ -198,7 +198,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         let bet = betLabel.value
-        if( balanceLabel.value > bet && bet > 0 ) { playBtn!.enable() }
+        if( balanceLabel.value >= bet && bet > 0 ) { playBtn!.enable() }
         else { playBtn!.disable() }
         
         if playBtn!.isClicked {
