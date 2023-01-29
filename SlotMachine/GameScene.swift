@@ -21,7 +21,7 @@ class GameScene: SKScene {
     
     // balance
     var balance: Balance?
-    let balanceLabel : SKLabel = SKLabel(position: CGPoint(x: 105, y: 325), defaultVal:  100)
+    let balanceDisplay : SKLabel = SKLabel(position: CGPoint(x: 105, y: 325), defaultVal:  100)
     
     
     var upBtn: BetControlButton?
@@ -29,13 +29,13 @@ class GameScene: SKScene {
     
     // jackport
     var jackpotBalance: JackpotBalance?
-    let jackpotLabel : SKLabel = SKLabel(position: CGPoint(x: 0, y: 242), defaultVal: 0)
+    let jackpotDisplay : SKLabel = SKLabel(position: CGPoint(x: 0, y: 242), defaultVal: 0)
     
     var bg2: Background?
     
     // bet
     var betAmount: BetAmount?
-    let betLabel: SKLabel = SKLabel(position: CGPoint(x: -5, y: -273), defaultVal: 0)
+    let betDisplay: SKLabel = SKLabel(position: CGPoint(x: -5, y: -273), defaultVal: 0)
     
     var reel1: ReelSpin?
     var reel2: ReelSpin?
@@ -119,14 +119,14 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        betLabel.updateLabel()
-        self.addChild(betLabel)
+        betDisplay.updateLabel()
+        self.addChild(betDisplay)
         
-        balanceLabel.updateLabel()
-        self.addChild(balanceLabel)
+        balanceDisplay.updateLabel()
+        self.addChild(balanceDisplay)
         
-        jackpotLabel.updateLabel()
-        self.addChild(jackpotLabel)
+        jackpotDisplay.updateLabel()
+        self.addChild(jackpotDisplay)
     }
     
     func touchDown(atPoint pos: CGPoint) {
@@ -134,7 +134,7 @@ class GameScene: SKScene {
         if node.name == "playBtn" {
             if !playBtn!.isClicked && !playBtn!.isDisabled {
                 playBtn!.isClicked = true
-                balanceLabel.substract(val: betLabel.value)
+                balanceDisplay.substract(val: betDisplay.value)
                 let seconds = SKAction.wait(forDuration: 5)
                 let stop = SKAction.run {
                     self.playBtn!.isClicked = false
@@ -156,9 +156,9 @@ class GameScene: SKScene {
                 self.run(action)
             }
         } else if node.name == "ResetBtn" {
-            betLabel.reset()
-            balanceLabel.reset()
-            jackpotLabel.reset()
+            betDisplay.reset()
+            balanceDisplay.reset()
+            jackpotDisplay.reset()
             playBtn!.isClicked = false
             reel1?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
             reel2?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
@@ -167,12 +167,12 @@ class GameScene: SKScene {
             exit(0)
         } else if node.name == "UpBtn" {
             // add condition
-            if balanceLabel.value > betLabel.value {
-                betLabel.add(val: 5)
+            if balanceDisplay.value > betDisplay.value {
+                betDisplay.add(val: 5)
             }
         } else if node.name == "DownBtn" {
-            if betLabel.value >= 5  {
-                betLabel.substract(val: 5)
+            if betDisplay.value >= 5  {
+                betDisplay.substract(val: 5)
             }
         }
     }
@@ -198,8 +198,8 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        let bet = betLabel.value
-        if( balanceLabel.value >= bet && bet > 0 ) { playBtn!.enable() }
+        let bet = betDisplay.value
+        if( balanceDisplay.value >= bet && bet > 0 ) { playBtn!.enable() }
         else { playBtn!.disable() }
         
         if playBtn!.isClicked {
@@ -218,19 +218,19 @@ class GameScene: SKScene {
     }
     
     func checkSpinResult (img1: String?, img2: String?, img3: String?) {
-        let bet = betLabel.value
+        let bet = betDisplay.value
         if( img1! == img2! && img2! == img3! ){
             // 3 images same, wins jackpot
-            balanceLabel.add(val: jackpotLabel.value)
-            jackpotLabel.reset()
+            balanceDisplay.add(val: jackpotDisplay.value)
+            jackpotDisplay.reset()
         } else if( img1! == img2! || img2! == img3! || img1! == img3!){
             // 2 images same, wins the bet, jackpot will store the bet
-            balanceLabel.add(val: bet * 2)
-            jackpotLabel.add(val: bet)
+            balanceDisplay.add(val: bet * 2)
+            jackpotDisplay.add(val: bet)
         } else {
             // no images same, lose the bet
-            balanceLabel.substract(val: bet)
-            jackpotLabel.add(val: bet)
+            balanceDisplay.substract(val: bet)
+            jackpotDisplay.add(val: bet)
         }
     }
 }
