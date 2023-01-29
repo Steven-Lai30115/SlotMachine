@@ -158,6 +158,7 @@ class GameScene: SKScene {
         } else if node.name == "ResetBtn" {
             betLabel.reset()
             balanceLabel.reset()
+            jackpotLabel.reset()
             playBtn!.isClicked = false
             reel1?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
             reel2?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
