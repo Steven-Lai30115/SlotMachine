@@ -27,6 +27,8 @@
 		7ADD60B32977160C0007A52E /* UIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD60B22977160C0007A52E /* UIElement.swift */; };
 		7ADD60B5297726200007A52E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD60B4297726200007A52E /* BackButton.swift */; };
 		7AFD178F29764A8D009A19A6 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 7AFD178E29764A8D009A19A6 /* assets */; };
+		B11376C1299ADB690092252D /* SupportScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11376C0299ADB690092252D /* SupportScene.swift */; };
+		B11376C3299ADB7A0092252D /* SupportScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B11376C2299ADB7A0092252D /* SupportScene.sks */; };
 		B139A99229786C3800D05F0E /* ReelSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B139A99129786C3800D05F0E /* ReelSpin.swift */; };
 		B139A994297876B100D05F0E /* SKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B139A993297876B100D05F0E /* SKLabel.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +55,8 @@
 		7ADD60B22977160C0007A52E /* UIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElement.swift; sourceTree = "<group>"; };
 		7ADD60B4297726200007A52E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		7AFD178E29764A8D009A19A6 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		B11376C0299ADB690092252D /* SupportScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportScene.swift; sourceTree = "<group>"; };
+		B11376C2299ADB7A0092252D /* SupportScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SupportScene.sks; sourceTree = "<group>"; };
 		B139A99129786C3800D05F0E /* ReelSpin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelSpin.swift; sourceTree = "<group>"; };
 		B139A993297876B100D05F0E /* SKLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +137,8 @@
 			children = (
 				7A92D1B5297616D300462055 /* GameScene.sks */,
 				7A92D1B9297616D300462055 /* GameScene.swift */,
+				B11376C0299ADB690092252D /* SupportScene.swift */,
+				B11376C2299ADB7A0092252D /* SupportScene.sks */,
 			);
 			path = GameScene;
 			sourceTree = "<group>";
@@ -199,6 +205,7 @@
 				7A92D1B6297616D300462055 /* GameScene.sks in Resources */,
 				7A92D1C1297616D400462055 /* Assets.xcassets in Resources */,
 				7AFD178F29764A8D009A19A6 /* assets in Resources */,
+				B11376C3299ADB7A0092252D /* SupportScene.sks in Resources */,
 				7A92D1C4297616D400462055 /* LaunchScreen.storyboard in Resources */,
 				7A92D1B8297616D300462055 /* Actions.sks in Resources */,
 			);
@@ -213,6 +220,7 @@
 			files = (
 				B139A99229786C3800D05F0E /* ReelSpin.swift in Sources */,
 				24EBFD23297738280089D546 /* BetControlButton.swift in Sources */,
+				B11376C1299ADB690092252D /* SupportScene.swift in Sources */,
 				24EBFD1D2977353C0089D546 /* Background.swift in Sources */,
 				7A92D1BA297616D300462055 /* GameScene.swift in Sources */,
 				7ADD60B5297726200007A52E /* BackButton.swift in Sources */,

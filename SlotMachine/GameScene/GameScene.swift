@@ -45,6 +45,8 @@ class GameScene: SKScene {
         screenHeight = screenSize.height
         screenWidth = screenSize.width
         initializeSceneUI()
+        
+        name = "Game"
     }
     
     func initializeSceneUI() {
