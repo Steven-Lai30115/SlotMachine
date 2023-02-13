@@ -8,8 +8,11 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import CoreData
 
 class GameViewController: UIViewController {
+    
+    var container: NSPersistentContainer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,5 +50,12 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // handle data passing
+//        if let nextVC = segue.destination as? NextViewController {
+//            nextVC.container = container
+//        }
     }
 }

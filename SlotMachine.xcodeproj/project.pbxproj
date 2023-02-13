@@ -29,6 +29,10 @@
 		7AFD178F29764A8D009A19A6 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 7AFD178E29764A8D009A19A6 /* assets */; };
 		B11376C1299ADB690092252D /* SupportScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11376C0299ADB690092252D /* SupportScene.swift */; };
 		B11376C3299ADB7A0092252D /* SupportScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B11376C2299ADB7A0092252D /* SupportScene.sks */; };
+		B11376CA299AE2B70092252D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11376C9299AE2B70092252D /* CoreDataManager.swift */; };
+		B11376CC299AE3920092252D /* RankCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11376CB299AE3920092252D /* RankCoreDataManager.swift */; };
+		B11376CE299AE4510092252D /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11376CD299AE4510092252D /* Rank.swift */; };
+		B11376D1299AE7600092252D /* Rank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B11376CF299AE7600092252D /* Rank.xcdatamodeld */; };
 		B139A99229786C3800D05F0E /* ReelSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B139A99129786C3800D05F0E /* ReelSpin.swift */; };
 		B139A994297876B100D05F0E /* SKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B139A993297876B100D05F0E /* SKLabel.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +61,10 @@
 		7AFD178E29764A8D009A19A6 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		B11376C0299ADB690092252D /* SupportScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportScene.swift; sourceTree = "<group>"; };
 		B11376C2299ADB7A0092252D /* SupportScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SupportScene.sks; sourceTree = "<group>"; };
+		B11376C9299AE2B70092252D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		B11376CB299AE3920092252D /* RankCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankCoreDataManager.swift; sourceTree = "<group>"; };
+		B11376CD299AE4510092252D /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		B11376D0299AE7600092252D /* Rank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Rank.xcdatamodel; sourceTree = "<group>"; };
 		B139A99129786C3800D05F0E /* ReelSpin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelSpin.swift; sourceTree = "<group>"; };
 		B139A993297876B100D05F0E /* SKLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +99,7 @@
 		7A92D1B2297616D300462055 /* SlotMachine */ = {
 			isa = PBXGroup;
 			children = (
+				B11376C4299ADE7E0092252D /* CoreData */,
 				B11376BF299ADA530092252D /* GameScene */,
 				7ADD60AF297705720007A52E /* GameObject */,
 				7ADD60AC2977032F0007A52E /* Core */,
@@ -141,6 +150,17 @@
 				B11376C2299ADB7A0092252D /* SupportScene.sks */,
 			);
 			path = GameScene;
+			sourceTree = "<group>";
+		};
+		B11376C4299ADE7E0092252D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				B11376C9299AE2B70092252D /* CoreDataManager.swift */,
+				B11376CB299AE3920092252D /* RankCoreDataManager.swift */,
+				B11376CD299AE4510092252D /* Rank.swift */,
+				B11376CF299AE7600092252D /* Rank.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,9 +241,12 @@
 				B139A99229786C3800D05F0E /* ReelSpin.swift in Sources */,
 				24EBFD23297738280089D546 /* BetControlButton.swift in Sources */,
 				B11376C1299ADB690092252D /* SupportScene.swift in Sources */,
+				B11376CA299AE2B70092252D /* CoreDataManager.swift in Sources */,
+				B11376D1299AE7600092252D /* Rank.xcdatamodeld in Sources */,
 				24EBFD1D2977353C0089D546 /* Background.swift in Sources */,
 				7A92D1BA297616D300462055 /* GameScene.swift in Sources */,
 				7ADD60B5297726200007A52E /* BackButton.swift in Sources */,
+				B11376CE299AE4510092252D /* Rank.swift in Sources */,
 				7A92D1BC297616D300462055 /* GameViewController.swift in Sources */,
 				B139A994297876B100D05F0E /* SKLabel.swift in Sources */,
 				24EBFD2F297749A10089D546 /* ReelImage.swift in Sources */,
@@ -231,6 +254,7 @@
 				24EBFD2729773AA40089D546 /* JackpotBalance.swift in Sources */,
 				24EBFD2B29773BDC0089D546 /* Reel.swift in Sources */,
 				24EBFD1F297736F40089D546 /* ResetButton.swift in Sources */,
+				B11376CC299AE3920092252D /* RankCoreDataManager.swift in Sources */,
 				24EBFD2529773A100089D546 /* Balance.swift in Sources */,
 				24EBFD21297737990089D546 /* PlayButton.swift in Sources */,
 				7ADD60B32977160C0007A52E /* UIElement.swift in Sources */,
@@ -454,6 +478,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B11376CF299AE7600092252D /* Rank.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B11376D0299AE7600092252D /* Rank.xcdatamodel */,
+			);
+			currentVersion = B11376D0299AE7600092252D /* Rank.xcdatamodel */;
+			path = Rank.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7A92D1A8297616D300462055 /* Project object */;
 }
