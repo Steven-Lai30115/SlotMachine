@@ -87,13 +87,12 @@
 		7A92D1B2297616D300462055 /* SlotMachine */ = {
 			isa = PBXGroup;
 			children = (
+				B11376BF299ADA530092252D /* GameScene */,
 				7ADD60AF297705720007A52E /* GameObject */,
 				7ADD60AC2977032F0007A52E /* Core */,
 				7AFD178E29764A8D009A19A6 /* assets */,
 				7A92D1B3297616D300462055 /* AppDelegate.swift */,
-				7A92D1B5297616D300462055 /* GameScene.sks */,
 				7A92D1B7297616D300462055 /* Actions.sks */,
-				7A92D1B9297616D300462055 /* GameScene.swift */,
 				7A92D1BB297616D300462055 /* GameViewController.swift */,
 				7A92D1BD297616D300462055 /* Main.storyboard */,
 				7A92D1C0297616D400462055 /* Assets.xcassets */,
@@ -127,6 +126,15 @@
 				B139A993297876B100D05F0E /* SKLabel.swift */,
 			);
 			path = GameObject;
+			sourceTree = "<group>";
+		};
+		B11376BF299ADA530092252D /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				7A92D1B5297616D300462055 /* GameScene.sks */,
+				7A92D1B9297616D300462055 /* GameScene.swift */,
+			);
+			path = GameScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
