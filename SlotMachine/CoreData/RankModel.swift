@@ -8,6 +8,6 @@
 import Foundation
 import CoreData
 
-class Rank: NSManagedObject {
+class RankModel: NSManagedObject {
     @NSManaged var score: Int
 }

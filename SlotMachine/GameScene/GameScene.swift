@@ -37,6 +37,10 @@ class GameScene: SKScene {
     var betAmount: BetAmount?
     let betDisplay: SKLabel = SKLabel(position: CGPoint(x: -5, y: -273), defaultVal: 0)
     
+    // champion score
+    var champion: Champion?
+    let championScore: SKLabel = SKLabel(position: CGPoint(x: 0, y: 242), defaultVal: 0)
+    
     var reel1: ReelSpin?
     var reel2: ReelSpin?
     var reel3: ReelSpin?
@@ -80,6 +84,10 @@ class GameScene: SKScene {
         
         jackpotBalance = JackpotBalance(imageString: "jackpot_balance", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: jackpotBalance!)
+        
+        // todo 
+        champion = Champion(imageString: "jackpot_balance", scale: 1, _zPosition: 1)
+        instantiateUI(uiElement: champion!)
         
         betAmount = BetAmount(imageString: "betAmount", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: betAmount!)
@@ -130,6 +138,9 @@ class GameScene: SKScene {
         
         jackpotDisplay.updateLabel()
         self.addChild(jackpotDisplay)
+        
+        championScore.updateLabel()
+        self.addChild(championScore)
     }
     
     func touchDown(atPoint pos: CGPoint) {
@@ -150,9 +161,19 @@ class GameScene: SKScene {
                     for img in self.reel3!.realImages {
                         img.setFinalPosition()
                     }
-                    
-                    self.checkSpinResult(img1: self.reel1?.getSpinResult()?.image, img2: self.reel2?.getSpinResult()?.image,
-                                    img3: self.reel3?.getSpinResult()?.image)
+                    let oldBalance = self.balanceDisplay.value
+                    self.checkSpinResult(
+                        img1: self.reel1?.getSpinResult()?.image,
+                        img2: self.reel2?.getSpinResult()?.image,
+                        img3: self.reel3?.getSpinResult()?.image
+                    )
+                    let newBalance = self.balanceDisplay.value
+                    let highestScore = (newBalance - oldBalance)
+                    if highestScore > self.championScore.value {
+                        if let controller = self.view?.window?.rootViewController as? GameViewController {
+                           controller.updateHighestScore(score: highestScore)
+                        }
+                    }
                 }
                 let sequence = SKAction.sequence([seconds, stop])
                 let action = SKAction.repeat(sequence, count: 1)

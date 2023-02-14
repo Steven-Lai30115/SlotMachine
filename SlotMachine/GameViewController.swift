@@ -18,7 +18,8 @@ class GameViewController: UIViewController {
     
     var container: NSPersistentContainer!
     var currentScene: GKScene?
-
+    var manager = RankCoreDataManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         supportText.isHidden = true
@@ -59,12 +60,21 @@ class GameViewController: UIViewController {
 //        }
     }
     
+    func updateHighestScore(score: Int) {
+        manager.create(score: score)
+    }
+        
     func setScene(sceneName: String) -> Void
     {
         currentScene = GKScene(fileNamed: sceneName)
         
         if let scene = currentScene!.rootNode as! SKScene?
         {
+            if (sceneName == "GameScene") {
+                let s = scene as! GameScene
+                s.championScore.value = manager.get()
+            }
+            
             scene.scaleMode = .aspectFit
             if let view = self.view as! SKView?
             {
