@@ -9,6 +9,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import CoreData
+import FirebaseFirestore
 
 class GameViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     
     var container: NSPersistentContainer!
+    var db: Firestore!
     var currentScene: GKScene?
     var manager = RankCoreDataManager()
     
@@ -66,13 +68,15 @@ class GameViewController: UIViewController {
         
     func setScene(sceneName: String) -> Void
     {
-        currentScene = GKScene(fileNamed: sceneName)
         
+        currentScene = GKScene(fileNamed: sceneName)
         if let scene = currentScene!.rootNode as! SKScene?
         {
             if (sceneName == "GameScene") {
                 let s = scene as! GameScene
                 s.championScore.value = manager.get()
+                s.viewController = self
+                s.globalHighScore = getGlobalHighestScore()
             }
             
             scene.scaleMode = .aspectFit
@@ -82,5 +86,36 @@ class GameViewController: UIViewController {
                 view.ignoresSiblingOrder = true
             }
         }
+    }
+    
+    func setGlobalHighestScore(_score: Int!) -> Void
+    {
+        db.collection("GlobalHighscore").document("1").setData([
+            "score": _score as NSNumber
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    func getGlobalHighestScore() -> Int
+    {
+        var score = 0
+        Task {
+            await db.collection("GlobalHighscore").document("1").getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let currentScore = document.get("score")
+                    if(currentScore != nil) { score = currentScore as! Int? ?? 0 }
+                    print("currentHighScore: \(currentScore)")
+                } else {
+                    print("Document does not exist")
+                }
+                
+            }
+        }
+        print("score = \(score)")
+        return score
     }
 }

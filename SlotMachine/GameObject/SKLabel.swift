@@ -11,11 +11,13 @@ class SKLabel: SKLabelNode {
     
     var defaultVal: Int = 0;
     var value: Int = 0;
+    var prefix: String = ""
     
     init(position: CGPoint, defaultVal: Int) {
         super.init()
         self.defaultVal = defaultVal
         self.value = defaultVal
+        self.prefix = ""
         self.text = String(value)
         self.fontSize = 45
         self.zPosition = 3
@@ -29,7 +31,7 @@ class SKLabel: SKLabelNode {
     }
     
     func updateLabel() {
-        self.text = String(self.value)
+        self.text = "\(self.prefix)\(String(self.value))"
     }
     
     func reset() {

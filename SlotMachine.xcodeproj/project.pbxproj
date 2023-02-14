@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		243C9C86299C440C0042299F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 243C9C85299C440C0042299F /* GoogleService-Info.plist */; };
+		243C9C89299C45010042299F /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 243C9C88299C45010042299F /* FirebaseFirestoreCombine-Community */; };
+		243C9C8B299C45010042299F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 243C9C8A299C45010042299F /* FirebaseMessaging */; };
 		24EBFD1D2977353C0089D546 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD1C2977353C0089D546 /* Background.swift */; };
 		24EBFD1F297736F40089D546 /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD1E297736F40089D546 /* ResetButton.swift */; };
 		24EBFD21297737990089D546 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EBFD20297737990089D546 /* PlayButton.swift */; };
@@ -39,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		243C9C85299C440C0042299F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		24EBFD1C2977353C0089D546 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		24EBFD1E297736F40089D546 /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
 		24EBFD20297737990089D546 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				243C9C8B299C45010042299F /* FirebaseMessaging in Frameworks */,
+				243C9C89299C45010042299F /* FirebaseFirestoreCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +115,7 @@
 				7A92D1B3297616D300462055 /* AppDelegate.swift */,
 				7A92D1B7297616D300462055 /* Actions.sks */,
 				7A92D1BB297616D300462055 /* GameViewController.swift */,
+				243C9C85299C440C0042299F /* GoogleService-Info.plist */,
 				7A92D1BD297616D300462055 /* Main.storyboard */,
 				7A92D1C0297616D400462055 /* Assets.xcassets */,
 				7A92D1C2297616D400462055 /* LaunchScreen.storyboard */,
@@ -182,6 +189,10 @@
 			dependencies = (
 			);
 			name = SlotMachine;
+			packageProductDependencies = (
+				243C9C88299C45010042299F /* FirebaseFirestoreCombine-Community */,
+				243C9C8A299C45010042299F /* FirebaseMessaging */,
+			);
 			productName = SlotMachine;
 			productReference = 7A92D1B0297616D300462055 /* SlotMachine.app */;
 			productType = "com.apple.product-type.application";
@@ -210,6 +221,9 @@
 				Base,
 			);
 			mainGroup = 7A92D1A7297616D300462055;
+			packageReferences = (
+				243C9C87299C45010042299F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 7A92D1B1297616D300462055 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -225,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A92D1BF297616D300462055 /* Main.storyboard in Resources */,
+				243C9C86299C440C0042299F /* GoogleService-Info.plist in Resources */,
 				7A92D1B6297616D300462055 /* GameScene.sks in Resources */,
 				7A92D1C1297616D400462055 /* Assets.xcassets in Resources */,
 				7AFD178F29764A8D009A19A6 /* assets in Resources */,
@@ -423,7 +438,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = punmannok.SlotMachine;
+				PRODUCT_BUNDLE_IDENTIFIER = mapd724.SlotMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -452,7 +467,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = punmannok.SlotMachine;
+				PRODUCT_BUNDLE_IDENTIFIER = mapd724.SlotMachine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -482,6 +497,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		243C9C87299C45010042299F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		243C9C88299C45010042299F /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 243C9C87299C45010042299F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		243C9C8A299C45010042299F /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 243C9C87299C45010042299F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B11376CF299AE7600092252D /* Rank.xcdatamodeld */ = {

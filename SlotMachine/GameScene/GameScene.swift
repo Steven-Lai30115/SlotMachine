@@ -39,7 +39,14 @@ class GameScene: SKScene {
     
     // champion score
     var champion: Champion?
-    let championScore: SKLabel = SKLabel(position: CGPoint(x: 0, y: 242), defaultVal: 0)
+    let championScore: SKLabel = SKLabel(position: CGPoint(x: 0, y: 232), defaultVal: 0)
+    
+    // global high score
+    var globalHighScore: Int = 0
+    var globalHighScoreLabel: SKLabel?
+    
+    // viewController
+    var viewController: GameViewController?
     
     var reel1: ReelSpin?
     var reel2: ReelSpin?
@@ -122,6 +129,12 @@ class GameScene: SKScene {
         for reelImage in reel3!.realImages {
             instantiateUI(uiElement: reelImage)
         }
+        
+        globalHighScoreLabel = SKLabel(position: CGPoint(x: 0, y: bg2!.position.y - bg2!.halfHeight! - 30), defaultVal: globalHighScore ?? 0)
+        globalHighScoreLabel!.fontSize = 24
+        globalHighScoreLabel!.fontColor = UIColor.white
+        globalHighScoreLabel!.prefix = "Global Highest: "
+        
     }
     
     func instantiateUI(uiElement: UIElement) {
@@ -141,6 +154,9 @@ class GameScene: SKScene {
         
         championScore.updateLabel()
         self.addChild(championScore)
+        
+        globalHighScoreLabel!.updateLabel()
+        self.addChild(globalHighScoreLabel!)
     }
     
     func touchDown(atPoint pos: CGPoint) {
@@ -170,10 +186,10 @@ class GameScene: SKScene {
                     let newBalance = self.balanceDisplay.value
                     let highestScore = (newBalance - oldBalance)
                     if highestScore > self.championScore.value {
-                        if let controller = self.view?.window?.rootViewController as? GameViewController {
-                           controller.updateHighestScore(score: highestScore)
-                        }
+                        self.viewController!.updateHighestScore(score: highestScore)
                     }
+                    self.viewController!.setGlobalHighestScore(_score: highestScore)
+                    
                 }
                 let sequence = SKAction.sequence([seconds, stop])
                 let action = SKAction.repeat(sequence, count: 1)
