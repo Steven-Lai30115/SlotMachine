@@ -20,8 +20,8 @@ class RankCoreDataManager {
     func get() -> Int {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Rank")
         do {
-            let fetchRanked = try context.fetch(fetchRequest) as! [RankModel]
-            return fetchRanked.last?.score ?? 0
+            let fetchRanked = try context.fetch(fetchRequest) as! [Rank]
+            return Int(fetchRanked.last?.score ?? 0)
         } catch {
             print("Error fetching scores: \(error)")
         }
