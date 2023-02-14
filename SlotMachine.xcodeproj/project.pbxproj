@@ -146,8 +146,8 @@
 			children = (
 				7A92D1B5297616D300462055 /* GameScene.sks */,
 				7A92D1B9297616D300462055 /* GameScene.swift */,
-				B11376C0299ADB690092252D /* SupportScene.swift */,
 				B11376C2299ADB7A0092252D /* SupportScene.sks */,
+				B11376C0299ADB690092252D /* SupportScene.swift */,
 			);
 			path = GameScene;
 			sourceTree = "<group>";

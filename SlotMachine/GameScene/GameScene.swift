@@ -53,6 +53,7 @@ class GameScene: SKScene {
         // instantiate background
         background = Background(imageString: "Bg", scale: 0.455, _zPosition: 0)
         addChild(background!)
+        
         bg2 = Background(imageString: "bg2", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: bg2!)
 

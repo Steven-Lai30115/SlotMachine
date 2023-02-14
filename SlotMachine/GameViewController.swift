@@ -12,32 +12,18 @@ import CoreData
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var supportButton: UIButton!
+    @IBOutlet weak var supportText: UITextView!
+    @IBOutlet weak var closeButton: UIButton!
+    
     var container: NSPersistentContainer!
+    var currentScene: GKScene?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
-        // including entities and graphs.
-        if let scene = GKScene(fileNamed: "GameScene") {
-            
-            // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! GameScene? {
-                
-
-                
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
-                
-                // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-                }
-            }
-        }
+        supportText.isHidden = true
+        closeButton.isHidden = true
+        setScene(sceneName: "GameScene")
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -48,6 +34,20 @@ class GameViewController: UIViewController {
         }
     }
 
+    @IBAction func supportButton_Pressed(_ sender: Any) {
+        supportButton.isHidden = true
+        supportText.isHidden = false
+        closeButton.isHidden = false
+        setScene(sceneName: "SupportScene")
+    }
+    
+    @IBAction func closeButton_Pressed(_ sender: Any) {
+        supportButton.isHidden = false
+        supportText.isHidden = true
+        closeButton.isHidden = true
+        setScene(sceneName: "GameScene")
+    }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -57,5 +57,20 @@ class GameViewController: UIViewController {
 //        if let nextVC = segue.destination as? NextViewController {
 //            nextVC.container = container
 //        }
+    }
+    
+    func setScene(sceneName: String) -> Void
+    {
+        currentScene = GKScene(fileNamed: sceneName)
+        
+        if let scene = currentScene!.rootNode as! SKScene?
+        {
+            scene.scaleMode = .aspectFit
+            if let view = self.view as! SKView?
+            {
+                view.presentScene(scene)
+                view.ignoresSiblingOrder = true
+            }
+        }
     }
 }
