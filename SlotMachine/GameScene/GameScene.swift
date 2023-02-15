@@ -10,6 +10,8 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    var reloadTimer = 0
+    
     var screenSize = UIScreen.main.bounds
     var screenHeight: CGFloat?
     var screenWidth: CGFloat?
@@ -181,8 +183,6 @@ class GameScene: SKScene {
                             self.highestJackpotScore.updateLabel()
                         }
                     }
-                    
-                    
                 }
                 let sequence = SKAction.sequence([seconds, stop])
                 let action = SKAction.repeat(sequence, count: 1)
@@ -246,6 +246,15 @@ class GameScene: SKScene {
             
             for img in reel3!.realImages {
                 img.spin()
+            }
+        }
+        
+        reloadTimer+=1
+        if( reloadTimer > 600 ){
+            reloadTimer = 0
+            viewController!.getGlobalJackpot(){ currentJackpot in
+                self.jackpotDisplay.value = currentJackpot
+                self.jackpotDisplay.updateLabel()
             }
         }
     }

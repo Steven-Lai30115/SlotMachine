@@ -111,7 +111,7 @@ class GameViewController: UIViewController {
                     g.leave()
                 }
             }
-            g.notify(queue:.main) {
+            g.notify(queue: DispatchQueue.init(label: "addToGlobalJackpot")) {
              print("NEW jackpot: \(jackpot)")
              completion(jackpot)
             }
@@ -152,7 +152,7 @@ class GameViewController: UIViewController {
             
         }
 
-        g.notify(queue:.main) {
+        g.notify(queue: DispatchQueue.init(label: "getGlobalJackpot")) {
          print("NEW jackpot: \(jackpot)")
          completion(jackpot)
         }
