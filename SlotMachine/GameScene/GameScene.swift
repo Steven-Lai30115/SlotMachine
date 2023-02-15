@@ -41,10 +41,6 @@ class GameScene: SKScene {
     var champion: Champion?
     let championScore: SKLabel = SKLabel(position: CGPoint(x: 0, y: 232), defaultVal: 0)
     
-    // global high score
-    var globalHighScore: Int = 0
-    var globalHighScoreLabel: SKLabel?
-    
     // viewController
     var viewController: GameViewController?
     
@@ -130,10 +126,6 @@ class GameScene: SKScene {
             instantiateUI(uiElement: reelImage)
         }
         
-        globalHighScoreLabel = SKLabel(position: CGPoint(x: 0, y: bg2!.position.y - bg2!.halfHeight! - 30), defaultVal: globalHighScore ?? 0)
-        globalHighScoreLabel!.fontSize = 24
-        globalHighScoreLabel!.fontColor = UIColor.white
-        globalHighScoreLabel!.prefix = "Global Highest: "
         
     }
     
@@ -155,8 +147,6 @@ class GameScene: SKScene {
         championScore.updateLabel()
         self.addChild(championScore)
         
-        globalHighScoreLabel!.updateLabel()
-        self.addChild(globalHighScoreLabel!)
     }
     
     func touchDown(atPoint pos: CGPoint) {
@@ -190,11 +180,8 @@ class GameScene: SKScene {
                         self.championScore.value = highestScore
                         self.championScore.updateLabel()
                     }
-                    if highestScore > self.globalHighScore {
-                        self.viewController!.setGlobalHighestScore(_score: highestScore)
-                        self.globalHighScore = highestScore
-                        self.globalHighScoreLabel!.updateLabel()
-                    }
+                    
+                    
                 }
                 let sequence = SKAction.sequence([seconds, stop])
                 let action = SKAction.repeat(sequence, count: 1)
@@ -267,15 +254,26 @@ class GameScene: SKScene {
         if( img1! == img2! && img2! == img3! ){
             // 3 images same, wins jackpot
             balanceDisplay!.add(val: jackpotDisplay.value)
+            
+            viewController!.winGlobalJackpot()
             jackpotDisplay.reset()
         } else if( img1! == img2! || img2! == img3! || img1! == img3!){
             // 2 images same, wins the bet, jackpot will store the bet
             balanceDisplay!.add(val: bet * 2)
-            jackpotDisplay.add(val: bet)
+            //jackpotDisplay.add(val: bet)
+            viewController!.addToGlobalJackpot(_score: bet) { res in
+                self.jackpotDisplay.value = res
+                self.jackpotDisplay.updateLabel()
+            }
+            
         } else {
             // no images same, lose the bet
             balanceDisplay!.substract(val: bet)
-            jackpotDisplay.add(val: bet)
+            //jackpotDisplay.add(val: bet)
+            viewController!.addToGlobalJackpot(_score: bet) { res in
+                self.jackpotDisplay.value = res
+                self.jackpotDisplay.updateLabel()
+            }
         }
     }
 }

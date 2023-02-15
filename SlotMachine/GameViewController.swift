@@ -76,7 +76,10 @@ class GameViewController: UIViewController {
                 let s = scene as! GameScene
                 s.championScore.value = manager.get()
                 s.viewController = self
-                s.globalHighScore = getGlobalHighestScore()
+                getGlobalJackpot(){ res in
+                   s.jackpotDisplay.value = res
+                   s.jackpotDisplay.updateLabel()
+                }
             }
             
             scene.scaleMode = .aspectFit
@@ -88,34 +91,67 @@ class GameViewController: UIViewController {
         }
     }
     
-    func setGlobalHighestScore(_score: Int!) -> Void
+    func addToGlobalJackpot(_score: Int!, completion:@escaping((Int) -> ())) 
     {
-        db.collection("GlobalHighscore").document("1").setData([
-            "score": _score as NSNumber
+        var jackpot = 0
+        let g = DispatchGroup()
+        getGlobalJackpot(){ currentJackpot in
+            let dbRef = self.db.collection("GlobalJackpot").document("1")
+            g.enter()
+            jackpot = _score + currentJackpot
+            dbRef.setData([
+                "score": jackpot
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                    g.leave()
+                } else {
+                    print("Document successfully written! New value = \(currentJackpot + _score as NSNumber)")
+                    g.leave()
+                }
+            }
+            g.notify(queue:.main) {
+             print("NEW jackpot: \(jackpot)")
+             completion(jackpot)
+            }
+        }
+        
+    }
+    func winGlobalJackpot() -> Void
+    {
+       db.collection("GlobalJackpot").document("1").setData([
+                "score": 0,
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
-                print("Document successfully written!")
+                print("Document successfully written! new value = 0")
             }
         }
+        
     }
-    func getGlobalHighestScore() -> Int
+    func getGlobalJackpot(completion:@escaping((Int) -> ()))
     {
-        var score = 0
-        Task {
-            await db.collection("GlobalHighscore").document("1").getDocument { (document, error) in
-                if let document = document, document.exists {
-                    let currentScore = document.get("score")
-                    if(currentScore != nil) { score = currentScore as! Int? ?? 0 }
-                    print("currentHighScore: \(currentScore)")
-                } else {
-                    print("Document does not exist")
-                }
-                
+        let g = DispatchGroup()
+        var jackpot = 0
+        let docRef = db.collection("GlobalJackpot").document("1")
+        g.enter()
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let _jackpot = document.get("score")
+                if(_jackpot != nil) { jackpot = _jackpot as! Int? ?? 0 }
+                print("currentJackpot: \(_jackpot)")
+                g.leave()
+            } else {
+                print("Document does not exist")
+                g.leave()
             }
+            
         }
-        print("score = \(score)")
-        return score
+
+        g.notify(queue:.main) {
+         print("NEW jackpot: \(jackpot)")
+         completion(jackpot)
+        }
     }
 }
