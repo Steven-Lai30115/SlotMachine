@@ -20,7 +20,6 @@ class GameViewController: UIViewController {
     var container: NSPersistentContainer!
     var db: Firestore!
     var currentScene: GKScene?
-    var manager = RankCoreDataManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,10 +64,6 @@ class GameViewController: UIViewController {
 //        }
     }
     
-    func updateHighestScore(score: Int) {
-        manager.create(score: score)
-    }
-        
     func setScene(sceneName: String) -> Void
     {
         
@@ -77,12 +72,15 @@ class GameViewController: UIViewController {
         {
             if (sceneName == "GameScene") {
                 let s = scene as! GameScene
-                s.championScore.value = manager.get()
                 s.viewController = self
                 getGlobalJackpot(){ res in
                    s.jackpotDisplay.value = res
                    s.jackpotDisplay.updateLabel()
                 }
+                gethighestJackpot(){ res in
+                    s.highestJackpotScore.value = res
+                    s.highestJackpotScore.updateLabel()
+                 }
             }
             
             scene.scaleMode = .aspectFit
@@ -120,6 +118,7 @@ class GameViewController: UIViewController {
         }
         
     }
+    
     func resetGlobalJackpot() -> Void
     {
        db.collection("GlobalJackpot").document("1").setData([
@@ -133,6 +132,7 @@ class GameViewController: UIViewController {
         }
         
     }
+    
     func getGlobalJackpot(completion:@escaping((Int) -> ()))
     {
         let g = DispatchGroup()
@@ -154,6 +154,58 @@ class GameViewController: UIViewController {
 
         g.notify(queue:.main) {
          print("NEW jackpot: \(jackpot)")
+         completion(jackpot)
+        }
+    }
+    
+    
+    func addToHighestJackpot(_score: Int!, completion:@escaping((Int) -> ()))
+    {
+        var jackpot = 0
+        let g = DispatchGroup()
+        gethighestJackpot(){ currentJackpot in
+            let dbRef = self.db.collection("HighestJackpot").document("1")
+            g.enter()
+            jackpot = _score + currentJackpot
+            dbRef.setData([
+                "score": jackpot
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                    g.leave()
+                } else {
+                    print("Document successfully written! New value = \(currentJackpot + _score as NSNumber)")
+                    g.leave()
+                }
+            }
+            g.notify(queue:.main) {
+             print("NEW HighestJackpot: \(jackpot)")
+             completion(jackpot)
+            }
+        }
+    }
+    
+    func gethighestJackpot(completion:@escaping((Int) -> ()))
+    {
+        let g = DispatchGroup()
+        var jackpot = 0
+        let docRef = db.collection("HighestJackpot").document("1")
+        g.enter()
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let _jackpot = document.get("score")
+                if(_jackpot != nil) { jackpot = _jackpot as! Int? ?? 0 }
+                print("currentHighestJackpot: \(_jackpot)")
+                g.leave()
+            } else {
+                print("Document does not exist")
+                g.leave()
+            }
+            
+        }
+
+        g.notify(queue:.main) {
+         print("NEW HighestJackpot: \(jackpot)")
          completion(jackpot)
         }
     }

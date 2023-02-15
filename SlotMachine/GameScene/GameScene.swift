@@ -167,7 +167,7 @@ class GameScene: SKScene {
                     for img in self.reel3!.realImages {
                         img.setFinalPosition()
                     }
-                    let oldBalance = self.balance!.initialValue
+                    let oldBalance = self.balanceDisplay!.value
                     self.checkSpinResult(
                         img1: self.reel1?.getSpinResult()?.image,
                         img2: self.reel2?.getSpinResult()?.image,
@@ -176,9 +176,10 @@ class GameScene: SKScene {
                     let newBalance = self.balanceDisplay!.value
                     let highestScore = (newBalance - oldBalance)
                     if highestScore > self.highestJackpotScore.value {
-                        self.viewController!.updateHighestScore(score: highestScore)
-                        self.highestJackpotScore.value = highestScore
-                        self.highestJackpotScore.updateLabel()
+                        self.viewController!.addToHighestJackpot(_score: highestScore) { res in
+                            self.highestJackpotScore.value = res
+                            self.highestJackpotScore.updateLabel()
+                        }
                     }
                     
                     
