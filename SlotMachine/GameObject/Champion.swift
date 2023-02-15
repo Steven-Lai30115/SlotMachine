@@ -22,7 +22,7 @@ class Champion : UIElement{
     
     override func setInitialPosition(screenHeight: CGFloat, screenWidth: CGFloat){
         position.x = 0
-        position.y = 240
+        position.y = 265
         // CGPoint(x: 0, y: 260)
     }
 }

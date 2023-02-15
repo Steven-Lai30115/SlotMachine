@@ -13,7 +13,7 @@ class JackpotBalance : UIElement{
     
     override func setInitialPosition(screenHeight: CGFloat, screenWidth: CGFloat){
         position.x = 0
-        position.y = 260
+        position.y = -25
         // CGPoint(x: 0, y: 260)
     }
 }
