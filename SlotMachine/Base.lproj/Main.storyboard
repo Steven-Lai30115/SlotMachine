@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,20 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvb-PY-mHt">
-                                <rect key="frame" x="163" y="591" width="67" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutManager="textKit1" translatesAutoresizingMaskIntoConstraints="NO" id="ShL-Lr-rzh">
+                                <rect key="frame" x="56" y="143" width="290" height="420"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
-                                <connections>
-                                    <action selector="closeButton_Pressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="SzR-aa-2rQ"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ShL-Lr-rzh">
-                                <rect key="frame" x="56" y="143" width="299" height="420"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="420" id="EWC-fZ-2po"/>
+                                    <constraint firstAttribute="width" constant="299" id="LOQ-VE-78z"/>
+                                </constraints>
                                 <string key="text">1. Insert coins or bills into the machine to activate it.
 2. Select the number of pay lines you want to play (if applicable).
 3. Choose the amount you want to bet per pay line.
@@ -40,12 +33,14 @@ If the symbols match on a pay line, you win the amount displayed.
 6. Collect your winnings by pressing the cash-out button.
 7. Remember, the goal of a slot machine is to match the symbols on the pay lines to win. Good luck!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nle-LG-5Is">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nle-LG-5Is">
                                 <rect key="frame" x="330" y="430" width="44" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Fcc-Iu-pcg"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="ⓘ" cornerStyle="fixed">
                                     <backgroundConfiguration key="background"/>
@@ -58,7 +53,7 @@ If the symbols match on a pay line, you win the amount displayed.
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hg7-Gl-ma2">
-                                <rect key="frame" x="306" y="59" width="49" height="19"/>
+                                <rect key="frame" x="306" y="59" width="40" height="19"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <attributedString key="attributedTitle">
@@ -74,13 +69,42 @@ If the symbols match on a pay line, you win the amount displayed.
                                     <action selector="BackdoorResetButton_Pressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="PG8-kV-bIy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvb-PY-mHt">
+                                <rect key="frame" x="155" y="590" width="83" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="Esl-3M-Bm7"/>
+                                    <constraint firstAttribute="height" constant="35" id="wsq-I3-3hk"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                                <connections>
+                                    <action selector="closeButton_Pressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="SzR-aa-2rQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ShL-Lr-rzh" firstAttribute="top" secondItem="hg7-Gl-ma2" secondAttribute="bottom" constant="65" id="OXx-Zf-EXQ"/>
-                            <constraint firstItem="hg7-Gl-ma2" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" constant="290" id="ZCK-KG-nr3"/>
-                            <constraint firstItem="hg7-Gl-ma2" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" id="w3G-od-HuE"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="Nle-LG-5Is" secondAttribute="bottom" constant="348" id="2Gt-NQ-0lR"/>
+                            <constraint firstItem="hg7-Gl-ma2" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" id="3KD-Qy-rpK"/>
+                            <constraint firstItem="uvb-PY-mHt" firstAttribute="top" secondItem="ShL-Lr-rzh" secondAttribute="bottom" constant="27" id="5Gp-Jk-MeN"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="uvb-PY-mHt" secondAttribute="bottom" constant="193" id="6n7-Z7-fI0"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="ShL-Lr-rzh" secondAttribute="trailing" constant="47" id="7DY-0O-P3k"/>
+                            <constraint firstItem="ShL-Lr-rzh" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="56" id="A1B-BT-K20"/>
+                            <constraint firstItem="Nle-LG-5Is" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="330" id="F07-FT-eGM"/>
+                            <constraint firstItem="ShL-Lr-rzh" firstAttribute="top" secondItem="hg7-Gl-ma2" secondAttribute="bottom" constant="65" id="LpY-NV-aNR"/>
+                            <constraint firstItem="hg7-Gl-ma2" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="306" id="Q1Y-2V-4XY"/>
+                            <constraint firstItem="uvb-PY-mHt" firstAttribute="top" secondItem="ShL-Lr-rzh" secondAttribute="bottom" constant="27" id="QX8-oM-gIX"/>
+                            <constraint firstItem="uvb-PY-mHt" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" id="WiW-o8-NcJ"/>
+                            <constraint firstItem="hg7-Gl-ma2" firstAttribute="trailing" secondItem="ShL-Lr-rzh" secondAttribute="trailing" id="b3H-rm-dla"/>
+                            <constraint firstItem="uvb-PY-mHt" firstAttribute="top" secondItem="ShL-Lr-rzh" secondAttribute="bottom" constant="27" id="cqO-xc-6Xv"/>
+                            <constraint firstItem="ShL-Lr-rzh" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="47" id="gE7-Kq-T3w"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="uvb-PY-mHt" secondAttribute="trailing" constant="164.33333333333331" id="qMB-Fn-r1S"/>
+                            <constraint firstItem="ShL-Lr-rzh" firstAttribute="top" secondItem="hg7-Gl-ma2" secondAttribute="bottom" constant="39" id="uQC-di-aOA"/>
+                            <constraint firstItem="uvb-PY-mHt" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="155" id="vXa-QD-w1O"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="uvb-PY-mHt" secondAttribute="bottom" constant="193" id="xMt-X2-0pm"/>
                         </constraints>
                     </view>
                     <connections>
