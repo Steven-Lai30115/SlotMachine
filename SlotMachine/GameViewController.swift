@@ -50,6 +50,9 @@ class GameViewController: UIViewController {
         closeButton.isHidden = true
         setScene(sceneName: "GameScene")
     }
+    @IBAction func BackdoorResetButton_Pressed(_ sender: Any) {
+        resetGlobalJackpot()
+    }
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -117,7 +120,7 @@ class GameViewController: UIViewController {
         }
         
     }
-    func winGlobalJackpot() -> Void
+    func resetGlobalJackpot() -> Void
     {
        db.collection("GlobalJackpot").document("1").setData([
                 "score": 0,

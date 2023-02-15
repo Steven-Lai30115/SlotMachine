@@ -255,7 +255,7 @@ class GameScene: SKScene {
             // 3 images same, wins jackpot
             balanceDisplay!.add(val: jackpotDisplay.value)
             
-            viewController!.winGlobalJackpot()
+            viewController!.resetGlobalJackpot()
             jackpotDisplay.reset()
         } else if( img1! == img2! || img2! == img3! || img1! == img3!){
             // 2 images same, wins the bet, jackpot will store the bet
