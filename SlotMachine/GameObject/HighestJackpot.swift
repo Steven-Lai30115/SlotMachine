@@ -10,7 +10,7 @@ import Foundation
 import GameplayKit
 import SpriteKit
 
-class Champion : UIElement{
+class HighestJackpot : UIElement{
     
     init(imageString : String, scale : CGFloat, _zPosition: CGFloat){
         super.init(_name: imageString,imageString: imageString, initialScale: scale, _zPosition: _zPosition)

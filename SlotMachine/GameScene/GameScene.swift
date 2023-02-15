@@ -38,8 +38,8 @@ class GameScene: SKScene {
     let betDisplay: SKLabel = SKLabel(position: CGPoint(x: -5, y: -273), defaultVal: 0)
     
     // champion score
-    var champion: Champion?
-    let championScore: SKLabel = SKLabel(position: CGPoint(x: 0, y: 245), defaultVal: 0)
+    var highestJackpot: HighestJackpot?
+    let highestJackpotScore: SKLabel = SKLabel(position: CGPoint(x: 0, y: 245), defaultVal: 0)
     
     // viewController
     var viewController: GameViewController?
@@ -89,8 +89,8 @@ class GameScene: SKScene {
         instantiateUI(uiElement: jackpotBalance!)
         
         // todo 
-        champion = Champion(imageString: "global_jackpot", scale: 1, _zPosition: 1)
-        instantiateUI(uiElement: champion!)
+        highestJackpot = HighestJackpot(imageString: "global_jackpot", scale: 1, _zPosition: 1)
+        instantiateUI(uiElement: highestJackpot!)
         
         betAmount = BetAmount(imageString: "betAmount", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: betAmount!)
@@ -144,8 +144,8 @@ class GameScene: SKScene {
         jackpotDisplay.updateLabel()
         self.addChild(jackpotDisplay)
         
-        championScore.updateLabel()
-        self.addChild(championScore)
+        highestJackpotScore.updateLabel()
+        self.addChild(highestJackpotScore)
         
     }
     

@@ -36,7 +36,7 @@
 		B11376CC299AE3920092252D /* RankCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11376CB299AE3920092252D /* RankCoreDataManager.swift */; };
 		B11376CE299AE4510092252D /* RankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11376CD299AE4510092252D /* RankModel.swift */; };
 		B11376D1299AE7600092252D /* Rank.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B11376CF299AE7600092252D /* Rank.xcdatamodeld */; };
-		B1222B87299B2C2E00248E5E /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1222B86299B2C2E00248E5E /* Champion.swift */; };
+		B1222B87299B2C2E00248E5E /* HighestJackpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1222B86299B2C2E00248E5E /* HighestJackpot.swift */; };
 		B139A99229786C3800D05F0E /* ReelSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B139A99129786C3800D05F0E /* ReelSpin.swift */; };
 		B139A994297876B100D05F0E /* SKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B139A993297876B100D05F0E /* SKLabel.swift */; };
 /* End PBXBuildFile section */
@@ -70,7 +70,7 @@
 		B11376CB299AE3920092252D /* RankCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankCoreDataManager.swift; sourceTree = "<group>"; };
 		B11376CD299AE4510092252D /* RankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankModel.swift; sourceTree = "<group>"; };
 		B11376D0299AE7600092252D /* Rank.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Rank.xcdatamodel; sourceTree = "<group>"; };
-		B1222B86299B2C2E00248E5E /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
+		B1222B86299B2C2E00248E5E /* HighestJackpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighestJackpot.swift; sourceTree = "<group>"; };
 		B139A99129786C3800D05F0E /* ReelSpin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelSpin.swift; sourceTree = "<group>"; };
 		B139A993297876B100D05F0E /* SKLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,7 +146,7 @@
 				24EBFD2E297749A10089D546 /* ReelImage.swift */,
 				B139A99129786C3800D05F0E /* ReelSpin.swift */,
 				B139A993297876B100D05F0E /* SKLabel.swift */,
-				B1222B86299B2C2E00248E5E /* Champion.swift */,
+				B1222B86299B2C2E00248E5E /* HighestJackpot.swift */,
 			);
 			path = GameObject;
 			sourceTree = "<group>";
@@ -266,7 +266,7 @@
 				7ADD60B5297726200007A52E /* BackButton.swift in Sources */,
 				B11376CE299AE4510092252D /* RankModel.swift in Sources */,
 				7A92D1BC297616D300462055 /* GameViewController.swift in Sources */,
-				B1222B87299B2C2E00248E5E /* Champion.swift in Sources */,
+				B1222B87299B2C2E00248E5E /* HighestJackpot.swift in Sources */,
 				B139A994297876B100D05F0E /* SKLabel.swift in Sources */,
 				24EBFD2F297749A10089D546 /* ReelImage.swift in Sources */,
 				24EBFD2929773B030089D546 /* BetAmount.swift in Sources */,
