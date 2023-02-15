@@ -175,10 +175,10 @@ class GameScene: SKScene {
                     )
                     let newBalance = self.balanceDisplay!.value
                     let highestScore = (newBalance - oldBalance)
-                    if highestScore > self.championScore.value {
+                    if highestScore > self.highestJackpotScore.value {
                         self.viewController!.updateHighestScore(score: highestScore)
-                        self.championScore.value = highestScore
-                        self.championScore.updateLabel()
+                        self.highestJackpotScore.value = highestScore
+                        self.highestJackpotScore.updateLabel()
                     }
                     
                     
