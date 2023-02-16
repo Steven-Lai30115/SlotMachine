@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutManager="textKit1" translatesAutoresizingMaskIntoConstraints="NO" id="ShL-Lr-rzh">
-                                <rect key="frame" x="56" y="143" width="290" height="420"/>
+                                <rect key="frame" x="47" y="143" width="307.33333333333331" height="420"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="420" id="EWC-fZ-2po"/>
                                     <constraint firstAttribute="width" constant="299" id="LOQ-VE-78z"/>
                                 </constraints>
-                                <string key="text">1. Insert coins or bills into the machine to activate it.
+                                <mutableString key="text">1. Insert coins or bills into the machine to activate it.
 2. Select the number of pay lines you want to play (if applicable).
 3. Choose the amount you want to bet per pay line.
 Press the spin button to start the game.
@@ -31,7 +31,7 @@ Press the spin button to start the game.
 If the symbols match on a pay line, you win the amount displayed.
 5. Repeat the steps 4-6 to continue playing.
 6. Collect your winnings by pressing the cash-out button.
-7. Remember, the goal of a slot machine is to match the symbols on the pay lines to win. Good luck!</string>
+7. Remember, the goal of a slot machine is to match the symbols on the pay lines to win. Good luck! 8. Getting two same symbols = Double your bet, Getting all three symobls = Win the global jackpot!</mutableString>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -53,7 +53,7 @@ If the symbols match on a pay line, you win the amount displayed.
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hg7-Gl-ma2">
-                                <rect key="frame" x="306" y="59" width="40" height="19"/>
+                                <rect key="frame" x="306" y="59" width="48.333333333333314" height="19"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <attributedString key="attributedTitle">
@@ -70,7 +70,7 @@ If the symbols match on a pay line, you win the amount displayed.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvb-PY-mHt">
-                                <rect key="frame" x="155" y="590" width="83" height="35"/>
+                                <rect key="frame" x="155" y="590" width="82" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="83" id="Esl-3M-Bm7"/>
