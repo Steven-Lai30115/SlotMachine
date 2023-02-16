@@ -51,11 +51,13 @@ class GameScene: SKScene {
     var reel3: ReelSpin?
     
     // image pool
-    let imagePool = ["bye","angry","haha","hehe", "lick","no","touch"]
+    let imagePool = ["bye","angry","haha","hehe", "lick","no","touch", "scare", "wet", "zzz"]
     
-    let imagePool2 = ["bye","angry","hehe", "lick","touch"]
+    let imagePool2 = ["bye","angry","haha","hehe", "lick","no","touch"]
     
     let imagePool3 = ["bye"]
+    
+    var imageChildArray = [SKNode]()
 
     override func sceneDidLoad() {
         screenHeight = screenSize.height
@@ -104,6 +106,12 @@ class GameScene: SKScene {
         betAmount = BetAmount(imageString: "betAmount", scale: 1, _zPosition: 1)
         instantiateUI(uiElement: betAmount!)
         
+        
+        generateSlotPool()
+        
+    }
+    
+    func generateSlotPool(){
         // reel 1
         var images = getRandomStrings(from: imagePool, withLength: 6)
         //var images = ["bye", "beat", "bye", "bye", "beat", "bye", "beat"]
@@ -112,19 +120,23 @@ class GameScene: SKScene {
             images: images
         )
         instantiateUI(uiElement: reel1!.reel!)
+        imageChildArray.append(reel1!.reel!)
         for reelImage in reel1!.realImages {
             instantiateUI(uiElement: reelImage)
+            imageChildArray.append(reelImage)
         }
         
-        images = getRandomStrings(from: imagePool, withLength: 6)
-       // images = ["bye", "beat", "bye", "haha", "hehe"]
+        images = getRandomStrings(from: imagePool2, withLength: 6)
+        // images = ["bye", "beat", "bye", "haha", "hehe"]
         reel2 = ReelSpin(
             reel: Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 0, _numOfSpin: images.count),
             images:images
         )
         instantiateUI(uiElement: reel2!.reel!)
+        imageChildArray.append(reel2!.reel!)
         for reelImage in reel2!.realImages {
             instantiateUI(uiElement: reelImage)
+            imageChildArray.append(reelImage)
         }
         
         images = getRandomStrings(from: imagePool2, withLength: 6)
@@ -134,17 +146,25 @@ class GameScene: SKScene {
             images:images
         )
         instantiateUI(uiElement: reel3!.reel!)
+        imageChildArray.append(reel3!.reel!)
         for reelImage in reel3!.realImages {
             instantiateUI(uiElement: reelImage)
+            imageChildArray.append(reelImage)
         }
-        
-        
+    }
+    
+    func clearImageChild(){
+        for child in imageChildArray {
+            child.removeFromParent()
+        }
     }
     
     func instantiateUI(uiElement: UIElement) {
         uiElement.setInitialPosition(screenHeight: screenHeight!, screenWidth: screenWidth!)
         addChild(uiElement)
     }
+    
+
     
     func getRandomStrings(from pool: [String], withLength length: Int) -> [String] {
         var randomStrings = [String]()
@@ -179,6 +199,8 @@ class GameScene: SKScene {
             if !playBtn!.isClicked && !playBtn!.isDisabled {
                 playBtn!.isClicked = true
                 balanceDisplay!.substract(val: betDisplay.value)
+                clearImageChild()
+                generateSlotPool()
                 let seconds = SKAction.wait(forDuration: 5)
                 let stop = SKAction.run {
                     self.playBtn!.isClicked = false
