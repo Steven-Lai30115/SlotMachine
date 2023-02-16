@@ -49,6 +49,13 @@ class GameScene: SKScene {
     var reel1: ReelSpin?
     var reel2: ReelSpin?
     var reel3: ReelSpin?
+    
+    // image pool
+    let imagePool = ["bye","angry","haha","hehe", "lick","no","touch"]
+    
+    let imagePool2 = ["bye","angry","hehe", "lick","touch"]
+    
+    let imagePool3 = ["bye"]
 
     override func sceneDidLoad() {
         screenHeight = screenSize.height
@@ -98,7 +105,8 @@ class GameScene: SKScene {
         instantiateUI(uiElement: betAmount!)
         
         // reel 1
-        var images = ["bye", "beat", "bye", "bye", "beat", "bye", "beat"]
+        var images = getRandomStrings(from: imagePool, withLength: 6)
+        //var images = ["bye", "beat", "bye", "bye", "beat", "bye", "beat"]
         reel1 = ReelSpin(
             reel: Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: -1, _numOfSpin: images.count),
             images: images
@@ -108,7 +116,8 @@ class GameScene: SKScene {
             instantiateUI(uiElement: reelImage)
         }
         
-        images = ["bye", "beat", "bye", "haha", "hehe"]
+        images = getRandomStrings(from: imagePool, withLength: 6)
+       // images = ["bye", "beat", "bye", "haha", "hehe"]
         reel2 = ReelSpin(
             reel: Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 0, _numOfSpin: images.count),
             images:images
@@ -118,7 +127,8 @@ class GameScene: SKScene {
             instantiateUI(uiElement: reelImage)
         }
         
-        images = ["bye", "beat", "bye", "haha", "hehe", "beat"]
+        images = getRandomStrings(from: imagePool2, withLength: 6)
+        //images = ["bye", "beat", "bye", "haha", "hehe", "beat"]
         reel3 = ReelSpin(
             reel: Reel(imageString: "Rectangle", scale: 1, _zPosition: 2, _index: 1, _numOfSpin: images.count),
             images:images
@@ -134,6 +144,18 @@ class GameScene: SKScene {
     func instantiateUI(uiElement: UIElement) {
         uiElement.setInitialPosition(screenHeight: screenHeight!, screenWidth: screenWidth!)
         addChild(uiElement)
+    }
+    
+    func getRandomStrings(from pool: [String], withLength length: Int) -> [String] {
+        var randomStrings = [String]()
+        
+        for _ in 1...length {
+            let randomIndex = Int.random(in: 0..<pool.count)
+            let randomString = pool[randomIndex]
+            randomStrings.append(randomString)
+        }
+        
+        return randomStrings
     }
     
     override func didMove(to view: SKView) {
@@ -191,7 +213,7 @@ class GameScene: SKScene {
         } else if node.name == "ResetBtn" {
             betDisplay.reset()
             balanceDisplay!.reset()
-            jackpotDisplay.reset()
+            //jackpotDisplay.reset()
             playBtn!.isClicked = false
             reel1?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
             reel2?.reset(screenHeight: screenHeight!, screenWidth: screenWidth!)
@@ -278,7 +300,7 @@ class GameScene: SKScene {
             
         } else {
             // no images same, lose the bet
-            balanceDisplay!.substract(val: bet)
+            //balanceDisplay!.substract(val: bet)
             //jackpotDisplay.add(val: bet)
             viewController!.addToGlobalJackpot(_score: bet) { res in
                 self.jackpotDisplay.value = res
