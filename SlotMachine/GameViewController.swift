@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     var container: NSPersistentContainer!
     var db: Firestore!
     var currentScene: GKScene?
+    let deviceID = UIDevice.current.identifierForVendor?.uuidString
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,7 +165,7 @@ class GameViewController: UIViewController {
         var jackpot = 0
         let g = DispatchGroup()
         gethighestJackpot(){ currentJackpot in
-            let dbRef = self.db.collection("HighestJackpot").document("1")
+            let dbRef = self.db.collection("HighestJackpot").document(self.deviceID!)
             g.enter()
             jackpot = _score + currentJackpot
             dbRef.setData([
@@ -189,7 +190,7 @@ class GameViewController: UIViewController {
     {
         let g = DispatchGroup()
         var jackpot = 0
-        let docRef = db.collection("HighestJackpot").document("1")
+        let docRef = db.collection("HighestJackpot").document(self.deviceID!)
         g.enter()
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
