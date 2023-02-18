@@ -167,7 +167,7 @@ class GameViewController: UIViewController {
         gethighestJackpot(){ currentJackpot in
             let dbRef = self.db.collection("HighestJackpot").document(self.deviceID!)
             g.enter()
-            jackpot = _score + currentJackpot
+            jackpot = _score
             dbRef.setData([
                 "score": jackpot
             ]) { err in
